@@ -1,0 +1,15 @@
+{
+  "originHash" : "98ae5ebeadaa89b745c934d430a1ce14f296e4faa68e54c4f5fb4f75a6572ce7",
+  "pins" : [
+    {
+      "identity" : "truvideo-sdk-ios-camera",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Truvideo/truvideo-sdk-ios-camera",
+      "state" : {
+        "revision" : "a76aa6112a2a59161cc7f1785f02ac0b530c2dc5",
+        "version" : "76.1.1-RC.60"
+      }
+    }
+  ],
+  "version" : 3
+}
