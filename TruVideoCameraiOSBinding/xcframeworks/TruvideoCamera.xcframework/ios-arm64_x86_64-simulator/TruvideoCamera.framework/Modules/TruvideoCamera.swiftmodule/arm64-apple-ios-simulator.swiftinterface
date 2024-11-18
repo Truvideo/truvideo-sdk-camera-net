@@ -8,8 +8,8 @@ import UIKit
 import _Concurrency
 import _StringProcessing
 import _SwiftConcurrencyShims
-@_inheritsConvenienceInitializers @objc final public class TruvideoCamera : ObjectiveC.NSObject {
-  @objc public static let shared: TruvideoCamera.TruvideoCamera
+@_inheritsConvenienceInitializers @objc final public class TruvideoCameraSdk : ObjectiveC.NSObject {
+  @objc public static let shared: TruvideoCamera.TruvideoCameraSdk
   @objc final public func showCamera(in viewController: UIKit.UIViewController, completion: @escaping (_ paths: [Swift.String]) -> Swift.Void)
   @objc override dynamic public init()
   @objc deinit

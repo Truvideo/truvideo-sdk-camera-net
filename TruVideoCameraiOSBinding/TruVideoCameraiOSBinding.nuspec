@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>TruVideoCameraiOSBinding</id>
+    <version>0.0.5</version>
+    <authors>Truvideo</authors>
+    <description>Package Description</description>
+    <repository url="https://github.com/Truvideo/truvideo-sdk-camera-net" />
+    <dependencies>
+      <group targetFramework="Xamarin.iOS1.0" />
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System" targetFramework="Xamarin.iOS1.0" />
+      <frameworkAssembly assemblyName="System.Drawing.Common.dll" targetFramework="Xamarin.iOS1.0" />
+      <frameworkAssembly assemblyName="Xamarin.iOS" targetFramework="Xamarin.iOS1.0" />
+    </frameworkAssemblies>
+  </metadata>
+  <files>
+    <file src="TruVideoCameraiOSBinding.targets" target="build/TruVideoCameraiOSBinding.targets" />
+    <file src="bin/Release/TruVideoCameraiOSBinding.dll" target="lib/xamarinios10" />
+    <file src="xcframeworks/TruvideoCamera.xcframework/**" target="build/native/TruvideoCamera.xcframework/" />
+    <file src="xcframeworks/TruvideoSdkCamera.xcframework/**" target="build/native/TruvideoSdkCamera.xcframework/" />
+  </files>
+</package>

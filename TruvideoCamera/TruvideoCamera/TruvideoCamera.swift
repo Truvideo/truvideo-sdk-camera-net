@@ -2,9 +2,9 @@ import UIKit
 import TruvideoSdkCamera
 
 @objc
-final public class TruvideoCamera: NSObject {
+final public class TruvideoCameraSdk: NSObject {
     @objc
-    public static let shared = TruvideoCamera()
+    public static let shared = TruvideoCameraSdk()
 
     @objc public func showCamera(in viewController: UIViewController, completion: @escaping (_ paths: [String]) -> Void) {
         viewController.presentTruvideoSdkCameraView { result in

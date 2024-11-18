@@ -1,20 +1,19 @@
-
+﻿
 using System;
 using UIKit;
 using Foundation;
 using ObjCRuntime;
 
 namespace TruvideoCameraiOS {
-
-// @interface TruvideoCamera : NSObject
-[BaseType (typeof(NSObject), Name = "_TtC14TruvideoCamera14TruvideoCamera")]
+// @interface TruvideoCameraSdk : NSObject
+[BaseType (typeof(NSObject), Name = "_TtC14TruvideoCamera17TruvideoCameraSdk")]
 [DisableDefaultCtor]
-interface TruvideoCamera
+interface TruvideoCameraSdk
 {
-	// @property (readonly, nonatomic, strong, class) TruvideoCamera * _Nonnull shared;
+	// @property (readonly, nonatomic, strong, class) TruvideoCameraSdk * _Nonnull shared;
 	[Static]
 	[Export ("shared", ArgumentSemantic.Strong)]
-	TruvideoCamera Shared { get; }
+	TruvideoCameraSdk Shared { get; }
 
 	// -(void)showCameraIn:(UIViewController * _Nonnull)viewController completion:(void (^ _Nonnull)(NSArray<NSString *> * _Nonnull))completion;
 	[Export ("showCameraIn:completion:")]

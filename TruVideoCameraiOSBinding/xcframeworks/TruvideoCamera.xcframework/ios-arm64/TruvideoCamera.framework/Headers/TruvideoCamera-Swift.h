@@ -302,10 +302,10 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 @class UIViewController;
 @class NSString;
 
-SWIFT_CLASS("_TtC14TruvideoCamera14TruvideoCamera")
-@interface TruvideoCamera : NSObject
-SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TruvideoCamera * _Nonnull shared;)
-+ (TruvideoCamera * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
+SWIFT_CLASS("_TtC14TruvideoCamera17TruvideoCameraSdk")
+@interface TruvideoCameraSdk : NSObject
+SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TruvideoCameraSdk * _Nonnull shared;)
++ (TruvideoCameraSdk * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
 - (void)showCameraIn:(UIViewController * _Nonnull)viewController completion:(void (^ _Nonnull)(NSArray<NSString *> * _Nonnull))completion;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end

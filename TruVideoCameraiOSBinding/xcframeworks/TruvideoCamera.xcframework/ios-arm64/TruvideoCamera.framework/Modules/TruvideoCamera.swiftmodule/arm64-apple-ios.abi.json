@@ -20,8 +20,8 @@
       },
       {
         "kind": "TypeDecl",
-        "name": "TruvideoCamera",
-        "printedName": "TruvideoCamera",
+        "name": "TruvideoCameraSdk",
+        "printedName": "TruvideoCameraSdk",
         "children": [
           {
             "kind": "Var",
@@ -30,14 +30,14 @@
             "children": [
               {
                 "kind": "TypeNominal",
-                "name": "TruvideoCamera",
-                "printedName": "TruvideoCamera.TruvideoCamera",
-                "usr": "c:@M@TruvideoCamera@objc(cs)TruvideoCamera"
+                "name": "TruvideoCameraSdk",
+                "printedName": "TruvideoCamera.TruvideoCameraSdk",
+                "usr": "c:@M@TruvideoCamera@objc(cs)TruvideoCameraSdk"
               }
             ],
             "declKind": "Var",
-            "usr": "c:@M@TruvideoCamera@objc(cs)TruvideoCamera(cpy)shared",
-            "mangledName": "$s14TruvideoCameraAAC6sharedABvpZ",
+            "usr": "c:@M@TruvideoCamera@objc(cs)TruvideoCameraSdk(cpy)shared",
+            "mangledName": "$s14TruvideoCamera0aB3SdkC6sharedACvpZ",
             "moduleName": "TruvideoCamera",
             "static": true,
             "declAttributes": [
@@ -57,14 +57,14 @@
                 "children": [
                   {
                     "kind": "TypeNominal",
-                    "name": "TruvideoCamera",
-                    "printedName": "TruvideoCamera.TruvideoCamera",
-                    "usr": "c:@M@TruvideoCamera@objc(cs)TruvideoCamera"
+                    "name": "TruvideoCameraSdk",
+                    "printedName": "TruvideoCamera.TruvideoCameraSdk",
+                    "usr": "c:@M@TruvideoCamera@objc(cs)TruvideoCameraSdk"
                   }
                 ],
                 "declKind": "Accessor",
-                "usr": "c:@M@TruvideoCamera@objc(cs)TruvideoCamera(cm)shared",
-                "mangledName": "$s14TruvideoCameraAAC6sharedABvgZ",
+                "usr": "c:@M@TruvideoCamera@objc(cs)TruvideoCameraSdk(cm)shared",
+                "mangledName": "$s14TruvideoCamera0aB3SdkC6sharedACvgZ",
                 "moduleName": "TruvideoCamera",
                 "static": true,
                 "implicit": true,
@@ -120,8 +120,8 @@
               }
             ],
             "declKind": "Func",
-            "usr": "c:@M@TruvideoCamera@objc(cs)TruvideoCamera(im)showCameraIn:completion:",
-            "mangledName": "$s14TruvideoCameraAAC04showB02in10completionySo16UIViewControllerC_ySaySSGctF",
+            "usr": "c:@M@TruvideoCamera@objc(cs)TruvideoCameraSdk(im)showCameraIn:completion:",
+            "mangledName": "$s14TruvideoCamera0aB3SdkC04showB02in10completionySo16UIViewControllerC_ySaySSGctF",
             "moduleName": "TruvideoCamera",
             "objc_name": "showCameraIn:completion:",
             "declAttributes": [
@@ -138,14 +138,14 @@
             "children": [
               {
                 "kind": "TypeNominal",
-                "name": "TruvideoCamera",
-                "printedName": "TruvideoCamera.TruvideoCamera",
-                "usr": "c:@M@TruvideoCamera@objc(cs)TruvideoCamera"
+                "name": "TruvideoCameraSdk",
+                "printedName": "TruvideoCamera.TruvideoCameraSdk",
+                "usr": "c:@M@TruvideoCamera@objc(cs)TruvideoCameraSdk"
               }
             ],
             "declKind": "Constructor",
-            "usr": "c:@M@TruvideoCamera@objc(cs)TruvideoCamera(im)init",
-            "mangledName": "$s14TruvideoCameraAACABycfc",
+            "usr": "c:@M@TruvideoCamera@objc(cs)TruvideoCameraSdk(im)init",
+            "mangledName": "$s14TruvideoCamera0aB3SdkCACycfc",
             "moduleName": "TruvideoCamera",
             "overriding": true,
             "implicit": true,
@@ -159,8 +159,8 @@
           }
         ],
         "declKind": "Class",
-        "usr": "c:@M@TruvideoCamera@objc(cs)TruvideoCamera",
-        "mangledName": "$s14TruvideoCameraAAC",
+        "usr": "c:@M@TruvideoCamera@objc(cs)TruvideoCameraSdk",
+        "mangledName": "$s14TruvideoCamera0aB3SdkC",
         "moduleName": "TruvideoCamera",
         "declAttributes": [
           "AccessControl",
