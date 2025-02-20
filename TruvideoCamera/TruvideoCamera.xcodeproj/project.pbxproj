@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1880454D2D65BB0800AC70C1 /* TruvideoSdkCamera in Frameworks */ = {isa = PBXBuildFile; productRef = 1880454C2D65BB0800AC70C1 /* TruvideoSdkCamera */; };
 		F52CBD3B2C91E2A90061DF99 /* TruvideoCamera.h in Headers */ = {isa = PBXBuildFile; fileRef = F52CBD3A2C91E2A90061DF99 /* TruvideoCamera.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F52CBD4B2C91E3F60061DF99 /* TruvideoCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = F52CBD4A2C91E3F60061DF99 /* TruvideoCamera.swift */; };
-		F5F7AC622CD9867B00F64BD9 /* TruvideoSdkCamera in Frameworks */ = {isa = PBXBuildFile; productRef = F5F7AC612CD9867B00F64BD9 /* TruvideoSdkCamera */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,7 +23,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5F7AC622CD9867B00F64BD9 /* TruvideoSdkCamera in Frameworks */,
+				1880454D2D65BB0800AC70C1 /* TruvideoSdkCamera in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,7 +84,7 @@
 			);
 			name = TruvideoCamera;
 			packageProductDependencies = (
-				F5F7AC612CD9867B00F64BD9 /* TruvideoSdkCamera */,
+				1880454C2D65BB0800AC70C1 /* TruvideoSdkCamera */,
 			);
 			productName = TruvideoCamera;
 			productReference = F52CBD372C91E2A90061DF99 /* TruvideoCamera.framework */;
@@ -115,7 +115,7 @@
 			);
 			mainGroup = F52CBD2D2C91E2A90061DF99;
 			packageReferences = (
-				F5F7AC602CD9867B00F64BD9 /* XCRemoteSwiftPackageReference "truvideo-sdk-ios-camera" */,
+				1880454B2D65BB0800AC70C1 /* XCRemoteSwiftPackageReference "truvideo-sdk-ios-camera" */,
 			);
 			productRefGroup = F52CBD382C91E2A90061DF99 /* Products */;
 			projectDirPath = "";
@@ -360,20 +360,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		F5F7AC602CD9867B00F64BD9 /* XCRemoteSwiftPackageReference "truvideo-sdk-ios-camera" */ = {
+		1880454B2D65BB0800AC70C1 /* XCRemoteSwiftPackageReference "truvideo-sdk-ios-camera" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Truvideo/truvideo-sdk-ios-camera";
+			repositoryURL = "https://github.com/Truvideo/truvideo-sdk-ios-camera.git";
 			requirement = {
 				kind = exactVersion;
-				version = "76.1.1-RC.60";
+				version = 76.2.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F5F7AC612CD9867B00F64BD9 /* TruvideoSdkCamera */ = {
+		1880454C2D65BB0800AC70C1 /* TruvideoSdkCamera */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F5F7AC602CD9867B00F64BD9 /* XCRemoteSwiftPackageReference "truvideo-sdk-ios-camera" */;
+			package = 1880454B2D65BB0800AC70C1 /* XCRemoteSwiftPackageReference "truvideo-sdk-ios-camera" */;
 			productName = TruvideoSdkCamera;
 		};
 /* End XCSwiftPackageProductDependency section */

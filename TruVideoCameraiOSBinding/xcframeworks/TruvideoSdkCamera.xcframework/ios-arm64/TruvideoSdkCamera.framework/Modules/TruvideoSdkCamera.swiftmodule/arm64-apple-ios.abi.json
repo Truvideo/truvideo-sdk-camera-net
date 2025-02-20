@@ -6672,6 +6672,23 @@
       },
       {
         "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "TruvideoSdkCamera",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "SwiftUI",
+        "printedName": "SwiftUI",
+        "declKind": "Import",
+        "moduleName": "TruvideoSdkCamera"
+      },
+      {
+        "kind": "Import",
         "name": "SwiftUI",
         "printedName": "SwiftUI",
         "declKind": "Import",
@@ -10093,8 +10110,8 @@
       "filePath": "\/Users\/vagrant\/git\/CI.swift",
       "kind": "StringLiteral",
       "offset": 152,
-      "length": 4,
-      "value": "\"RC\""
+      "length": 6,
+      "value": "\"PROD\""
     },
     {
       "filePath": "\/Users\/vagrant\/git\/TruvideoSdkCamera\/Core\/Spacing\/TruVideoSpacing.swift",
@@ -10687,7 +10704,7 @@
     {
       "filePath": "\/Users\/vagrant\/git\/TruvideoSdkCamera\/Camera\/View Model\/CameraViewModel.swift",
       "kind": "BooleanLiteral",
-      "offset": 19958,
+      "offset": 19897,
       "length": 4,
       "value": "true"
     },
