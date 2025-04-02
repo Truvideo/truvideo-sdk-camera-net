@@ -15,8 +15,7 @@ interface TruvideoCamera
 	[Static]
 	[Export ("shared", ArgumentSemantic.Strong)]
 	TruvideoCamera Shared { get; }
-
-	// -(void)showCameraIn:(UIViewController * _Nonnull)viewController completion:(void (^ _Nonnull)(NSArray<NSString *> * _Nonnull))completion;
+	
 	[Export ("showCameraIn:completion:")]
 	void ShowCameraIn (UIViewController viewController, Action<NSArray<NSString>> completion);
 }
