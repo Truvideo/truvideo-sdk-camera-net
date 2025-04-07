@@ -303,14 +303,14 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 
 #if defined(__OBJC__)
-@class UIViewController;
 @class NSString;
+@class UIViewController;
 
 SWIFT_CLASS("_TtC14TruvideoCamera14TruvideoCamera")
 @interface TruvideoCamera : NSObject
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TruvideoCamera * _Nonnull shared;)
 + (TruvideoCamera * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
-- (void)showCameraIn:(UIViewController * _Nonnull)viewController completion:(void (^ _Nonnull)(NSArray<NSString *> * _Nonnull))completion;
+- (void)showCameraWithLensFacing:(NSString * _Nonnull)lensFacing flashMode:(NSString * _Nonnull)flashMode orientation:(NSString * _Nullable)orientation outputPath:(NSString * _Nonnull)outputPath mode:(NSString * _Nonnull)mode viewController:(UIViewController * _Nonnull)viewController completion:(void (^ _Nonnull)(NSArray<NSString *> * _Nonnull))completion;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -627,14 +627,14 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 
 #if defined(__OBJC__)
-@class UIViewController;
 @class NSString;
+@class UIViewController;
 
 SWIFT_CLASS("_TtC14TruvideoCamera14TruvideoCamera")
 @interface TruvideoCamera : NSObject
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TruvideoCamera * _Nonnull shared;)
 + (TruvideoCamera * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
-- (void)showCameraIn:(UIViewController * _Nonnull)viewController completion:(void (^ _Nonnull)(NSArray<NSString *> * _Nonnull))completion;
+- (void)showCameraWithLensFacing:(NSString * _Nonnull)lensFacing flashMode:(NSString * _Nonnull)flashMode orientation:(NSString * _Nullable)orientation outputPath:(NSString * _Nonnull)outputPath mode:(NSString * _Nonnull)mode viewController:(UIViewController * _Nonnull)viewController completion:(void (^ _Nonnull)(NSArray<NSString *> * _Nonnull))completion;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 

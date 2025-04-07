@@ -15,8 +15,12 @@ interface TruvideoCamera
 	[Static]
 	[Export ("shared", ArgumentSemantic.Strong)]
 	TruvideoCamera Shared { get; }
+
+	// -(void)showCameraIn:(UIViewController * _Nonnull)viewController completion:(void (^ _Nonnull)(NSArray<NSString *> * _Nonnull))completion;
+	[Export("showCameraWithLensFacing:flashMode:orientation:outputPath:mode:viewController:completion:")]
+	void ShowCamera(string lensFacing,string flashMode,string orientation,string outputPath,string mode,UIViewController viewController, Action<NSArray<NSString>> completion);
 	
-	[Export ("showCameraIn:completion:")]
-	void ShowCameraIn (UIViewController viewController, Action<NSArray<NSString>> completion);
+	[Export ("subscribeToCameraEventsWithCompletion:")]
+	void subscribeToCameraEvents(Action<NSString> completion);
 }
 }

@@ -19,6 +19,13 @@
         "moduleName": "TruvideoCamera"
       },
       {
+        "kind": "Import",
+        "name": "Combine",
+        "printedName": "Combine",
+        "declKind": "Import",
+        "moduleName": "TruvideoCamera"
+      },
+      {
         "kind": "TypeDecl",
         "name": "TruvideoCamera",
         "printedName": "TruvideoCamera",
@@ -79,12 +86,50 @@
           {
             "kind": "Function",
             "name": "showCamera",
-            "printedName": "showCamera(in:completion:)",
+            "printedName": "showCamera(lensFacing:flashMode:orientation:outputPath:mode:viewController:completion:)",
             "children": [
               {
                 "kind": "TypeNominal",
                 "name": "Void",
                 "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
               },
               {
                 "kind": "TypeNominal",
@@ -120,10 +165,10 @@
               }
             ],
             "declKind": "Func",
-            "usr": "c:@M@TruvideoCamera@objc(cs)TruvideoCamera(im)showCameraIn:completion:",
-            "mangledName": "$s14TruvideoCameraAAC04showB02in10completionySo16UIViewControllerC_ySaySSGctF",
+            "usr": "c:@M@TruvideoCamera@objc(cs)TruvideoCamera(im)showCameraWithLensFacing:flashMode:orientation:outputPath:mode:viewController:completion:",
+            "mangledName": "$s14TruvideoCameraAAC04showB010lensFacing9flashMode11orientation10outputPath4mode14viewController10completionySS_S2SSgS2SSo06UIViewM0CySaySSGctF",
             "moduleName": "TruvideoCamera",
-            "objc_name": "showCameraIn:completion:",
+            "objc_name": "showCameraWithLensFacing:flashMode:orientation:outputPath:mode:viewController:completion:",
             "declAttributes": [
               "Final",
               "AccessControl",

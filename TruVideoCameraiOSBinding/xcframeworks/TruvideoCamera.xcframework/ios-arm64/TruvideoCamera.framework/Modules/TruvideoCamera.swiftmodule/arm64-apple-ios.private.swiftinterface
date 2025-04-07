@@ -2,6 +2,7 @@
 // swift-compiler-version: Apple Swift version 6.0.3 effective-5.10 (swiftlang-6.0.3.1.10 clang-1600.0.30.1)
 // swift-module-flags: -target arm64-apple-ios17.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name TruvideoCamera
 // swift-module-flags-ignorable: -no-verify-emitted-module-interface
+import Combine
 import Swift
 @_exported import TruvideoCamera
 import TruvideoSdkCamera
@@ -11,7 +12,7 @@ import _StringProcessing
 import _SwiftConcurrencyShims
 @_inheritsConvenienceInitializers @objc final public class TruvideoCamera : ObjectiveC.NSObject {
   @objc public static let shared: TruvideoCamera.TruvideoCamera
-  @objc final public func showCamera(in viewController: UIKit.UIViewController, completion: @escaping (_ paths: [Swift.String]) -> Swift.Void)
+  @objc final public func showCamera(lensFacing: Swift.String, flashMode: Swift.String, orientation: Swift.String?, outputPath: Swift.String, mode: Swift.String, viewController: UIKit.UIViewController, completion: @escaping (_ paths: [Swift.String]) -> Swift.Void)
   @objc override dynamic public init()
   @objc deinit
 }
