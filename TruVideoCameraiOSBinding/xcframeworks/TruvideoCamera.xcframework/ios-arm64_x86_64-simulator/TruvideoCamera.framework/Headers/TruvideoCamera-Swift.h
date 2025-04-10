@@ -303,6 +303,55 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 
 #if defined(__OBJC__)
+typedef SWIFT_ENUM(NSInteger, FlashMode, open) {
+  FlashModeOn = 0,
+  FlashModeOff = 1,
+};
+
+typedef SWIFT_ENUM(NSInteger, LensType, open) {
+  LensTypeBack = 0,
+  LensTypeFront = 1,
+};
+
+enum ModeTypeRaw : NSInteger;
+@class NSNumber;
+
+SWIFT_CLASS("_TtC14TruvideoCamera14ModeTypeConfig")
+@interface ModeTypeConfig : NSObject
+@property (nonatomic) enum ModeTypeRaw rawType;
+@property (nonatomic, strong) NSNumber * _Nullable videoCount;
+@property (nonatomic, strong) NSNumber * _Nullable pictureCount;
+@property (nonatomic, strong) NSNumber * _Nullable videoDuration;
+@property (nonatomic, strong) NSNumber * _Nullable mediaCount;
+- (nonnull instancetype)initWithRawType:(enum ModeTypeRaw)rawType videoCount:(NSNumber * _Nullable)videoCount pictureCount:(NSNumber * _Nullable)pictureCount videoDuration:(NSNumber * _Nullable)videoDuration mediaCount:(NSNumber * _Nullable)mediaCount OBJC_DESIGNATED_INITIALIZER;
++ (ModeTypeConfig * _Nonnull)videoAndPictureWithVideoCount:(NSNumber * _Nullable)videoCount pictureCount:(NSNumber * _Nullable)pictureCount videoDuration:(NSNumber * _Nullable)videoDuration SWIFT_WARN_UNUSED_RESULT;
++ (ModeTypeConfig * _Nonnull)singleVideoWithVideoDuration:(NSNumber * _Nullable)videoDuration SWIFT_WARN_UNUSED_RESULT;
++ (ModeTypeConfig * _Nonnull)singlePicture SWIFT_WARN_UNUSED_RESULT;
++ (ModeTypeConfig * _Nonnull)singleVideoOrPictureWithVideoDuration:(NSNumber * _Nullable)videoDuration SWIFT_WARN_UNUSED_RESULT;
++ (ModeTypeConfig * _Nonnull)videoWithVideoCount:(NSNumber * _Nullable)videoCount videoDuration:(NSNumber * _Nullable)videoDuration SWIFT_WARN_UNUSED_RESULT;
++ (ModeTypeConfig * _Nonnull)pictureWithPictureCount:(NSNumber * _Nullable)pictureCount SWIFT_WARN_UNUSED_RESULT;
++ (ModeTypeConfig * _Nonnull)videoAndPictureCountedWithMediaCount:(NSNumber * _Nullable)mediaCount videoDuration:(NSNumber * _Nullable)videoDuration SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+typedef SWIFT_ENUM(NSInteger, ModeTypeRaw, open) {
+  ModeTypeRawVideoAndPicture = 0,
+  ModeTypeRawSingleVideo = 1,
+  ModeTypeRawSinglePicture = 2,
+  ModeTypeRawSingleVideoOrPicture = 3,
+  ModeTypeRawVideo = 4,
+  ModeTypeRawPicture = 5,
+  ModeTypeRawVideoAndPictureCounted = 6,
+};
+
+typedef SWIFT_ENUM(NSInteger, OrientationMode, open) {
+  OrientationModePortrait = 0,
+  OrientationModeLandscapeLeft = 1,
+  OrientationModeLandscapeRight = 2,
+  OrientationModePortraitReverse = 3,
+};
+
 @class NSString;
 @class UIViewController;
 
@@ -310,7 +359,9 @@ SWIFT_CLASS("_TtC14TruvideoCamera14TruvideoCamera")
 @interface TruvideoCamera : NSObject
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TruvideoCamera * _Nonnull shared;)
 + (TruvideoCamera * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
-- (void)showCameraWithLensFacing:(NSString * _Nonnull)lensFacing flashMode:(NSString * _Nonnull)flashMode orientation:(NSString * _Nullable)orientation outputPath:(NSString * _Nonnull)outputPath mode:(NSString * _Nonnull)mode viewController:(UIViewController * _Nonnull)viewController completion:(void (^ _Nonnull)(NSArray<NSString *> * _Nonnull))completion;
+- (void)showCameraWithLensFacing:(enum LensType)lensFacing flashMode:(enum FlashMode)flashMode orientation:(enum OrientationMode)orientation outputPath:(NSString * _Nonnull)outputPath modeConfig:(ModeTypeConfig * _Nonnull)modeConfig viewController:(UIViewController * _Nonnull)viewController completion:(void (^ _Nonnull)(NSArray<NSString *> * _Nonnull))completion;
+- (void)getCameraInfoWithCompletionHandler:(void (^ _Nonnull)(NSString * _Nullable, NSError * _Nullable))completionHandler;
+- (void)subscribeToCameraEventsWithCompletion:(void (^ _Nonnull)(NSString * _Nonnull))completion;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -627,6 +678,55 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 
 #if defined(__OBJC__)
+typedef SWIFT_ENUM(NSInteger, FlashMode, open) {
+  FlashModeOn = 0,
+  FlashModeOff = 1,
+};
+
+typedef SWIFT_ENUM(NSInteger, LensType, open) {
+  LensTypeBack = 0,
+  LensTypeFront = 1,
+};
+
+enum ModeTypeRaw : NSInteger;
+@class NSNumber;
+
+SWIFT_CLASS("_TtC14TruvideoCamera14ModeTypeConfig")
+@interface ModeTypeConfig : NSObject
+@property (nonatomic) enum ModeTypeRaw rawType;
+@property (nonatomic, strong) NSNumber * _Nullable videoCount;
+@property (nonatomic, strong) NSNumber * _Nullable pictureCount;
+@property (nonatomic, strong) NSNumber * _Nullable videoDuration;
+@property (nonatomic, strong) NSNumber * _Nullable mediaCount;
+- (nonnull instancetype)initWithRawType:(enum ModeTypeRaw)rawType videoCount:(NSNumber * _Nullable)videoCount pictureCount:(NSNumber * _Nullable)pictureCount videoDuration:(NSNumber * _Nullable)videoDuration mediaCount:(NSNumber * _Nullable)mediaCount OBJC_DESIGNATED_INITIALIZER;
++ (ModeTypeConfig * _Nonnull)videoAndPictureWithVideoCount:(NSNumber * _Nullable)videoCount pictureCount:(NSNumber * _Nullable)pictureCount videoDuration:(NSNumber * _Nullable)videoDuration SWIFT_WARN_UNUSED_RESULT;
++ (ModeTypeConfig * _Nonnull)singleVideoWithVideoDuration:(NSNumber * _Nullable)videoDuration SWIFT_WARN_UNUSED_RESULT;
++ (ModeTypeConfig * _Nonnull)singlePicture SWIFT_WARN_UNUSED_RESULT;
++ (ModeTypeConfig * _Nonnull)singleVideoOrPictureWithVideoDuration:(NSNumber * _Nullable)videoDuration SWIFT_WARN_UNUSED_RESULT;
++ (ModeTypeConfig * _Nonnull)videoWithVideoCount:(NSNumber * _Nullable)videoCount videoDuration:(NSNumber * _Nullable)videoDuration SWIFT_WARN_UNUSED_RESULT;
++ (ModeTypeConfig * _Nonnull)pictureWithPictureCount:(NSNumber * _Nullable)pictureCount SWIFT_WARN_UNUSED_RESULT;
++ (ModeTypeConfig * _Nonnull)videoAndPictureCountedWithMediaCount:(NSNumber * _Nullable)mediaCount videoDuration:(NSNumber * _Nullable)videoDuration SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+typedef SWIFT_ENUM(NSInteger, ModeTypeRaw, open) {
+  ModeTypeRawVideoAndPicture = 0,
+  ModeTypeRawSingleVideo = 1,
+  ModeTypeRawSinglePicture = 2,
+  ModeTypeRawSingleVideoOrPicture = 3,
+  ModeTypeRawVideo = 4,
+  ModeTypeRawPicture = 5,
+  ModeTypeRawVideoAndPictureCounted = 6,
+};
+
+typedef SWIFT_ENUM(NSInteger, OrientationMode, open) {
+  OrientationModePortrait = 0,
+  OrientationModeLandscapeLeft = 1,
+  OrientationModeLandscapeRight = 2,
+  OrientationModePortraitReverse = 3,
+};
+
 @class NSString;
 @class UIViewController;
 
@@ -634,7 +734,9 @@ SWIFT_CLASS("_TtC14TruvideoCamera14TruvideoCamera")
 @interface TruvideoCamera : NSObject
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TruvideoCamera * _Nonnull shared;)
 + (TruvideoCamera * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
-- (void)showCameraWithLensFacing:(NSString * _Nonnull)lensFacing flashMode:(NSString * _Nonnull)flashMode orientation:(NSString * _Nullable)orientation outputPath:(NSString * _Nonnull)outputPath mode:(NSString * _Nonnull)mode viewController:(UIViewController * _Nonnull)viewController completion:(void (^ _Nonnull)(NSArray<NSString *> * _Nonnull))completion;
+- (void)showCameraWithLensFacing:(enum LensType)lensFacing flashMode:(enum FlashMode)flashMode orientation:(enum OrientationMode)orientation outputPath:(NSString * _Nonnull)outputPath modeConfig:(ModeTypeConfig * _Nonnull)modeConfig viewController:(UIViewController * _Nonnull)viewController completion:(void (^ _Nonnull)(NSArray<NSString *> * _Nonnull))completion;
+- (void)getCameraInfoWithCompletionHandler:(void (^ _Nonnull)(NSString * _Nullable, NSError * _Nullable))completionHandler;
+- (void)subscribeToCameraEventsWithCompletion:(void (^ _Nonnull)(NSString * _Nonnull))completion;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 

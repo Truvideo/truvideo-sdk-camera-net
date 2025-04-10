@@ -1,26 +1,108 @@
+//
+// using System;
+// using UIKit;
+// using Foundation;
+// using ObjCRuntime;
+//
+// namespace TruvideoCameraiOS {
+//
+// // @interface TruvideoCamera : NSObject
+// [BaseType (typeof(NSObject), Name = "_TtC14TruvideoCamera14TruvideoCamera")]
+// [DisableDefaultCtor]
+// interface TruvideoCamera
+// {
+// 	// @property (readonly, nonatomic, strong, class) TruvideoCamera * _Nonnull shared;
+// 	[Static]
+// 	[Export ("shared", ArgumentSemantic.Strong)]
+// 	TruvideoCamera Shared { get; }
+//
+// 	// -(void)showCameraIn:(UIViewController * _Nonnull)viewController completion:(void (^ _Nonnull)(NSArray<NSString *> * _Nonnull))completion;
+// 	[Export("showCameraWithLensFacing:flashMode:orientation:outputPath:mode:viewController:completion:")]
+// 	void ShowCamera(string lensFacing,string flashMode,string orientation,string outputPath,string mode,UIViewController viewController, Action<NSArray<NSString>> completion);
+// 	
+// 	[Export ("subscribeToCameraEventsWithCompletion:")]
+// 	void subscribeToCameraEvents(Action<NSString> completion);
+// }
+// }
 
 using System;
-using UIKit;
 using Foundation;
 using ObjCRuntime;
+using UIKit;
 
-namespace TruvideoCameraiOS {
-
-// @interface TruvideoCamera : NSObject
-[BaseType (typeof(NSObject), Name = "_TtC14TruvideoCamera14TruvideoCamera")]
-[DisableDefaultCtor]
-interface TruvideoCamera
+namespace TruvideoCameraiOS
 {
-	// @property (readonly, nonatomic, strong, class) TruvideoCamera * _Nonnull shared;
-	[Static]
-	[Export ("shared", ArgumentSemantic.Strong)]
-	TruvideoCamera Shared { get; }
+    // ModeTypeConfig binding
+    [BaseType(typeof(NSObject), Name = "_TtC14TruvideoCamera14ModeTypeConfig")]
+    [DisableDefaultCtor]
+    interface ModeTypeConfig 
+    {
+        [Export("rawType", ArgumentSemantic.Assign)]
+        ModeTypeRaw RawType { get; set; }
 
-	// -(void)showCameraIn:(UIViewController * _Nonnull)viewController completion:(void (^ _Nonnull)(NSArray<NSString *> * _Nonnull))completion;
-	[Export("showCameraWithLensFacing:flashMode:orientation:outputPath:mode:viewController:completion:")]
-	void ShowCamera(string lensFacing,string flashMode,string orientation,string outputPath,string mode,UIViewController viewController, Action<NSArray<NSString>> completion);
-	
-	[Export ("subscribeToCameraEventsWithCompletion:")]
-	void subscribeToCameraEvents(Action<NSString> completion);
-}
+        [Export("videoCount")]
+        NSNumber VideoCount { get; set; }
+
+         [Export("pictureCount")]
+         NSNumber PictureCount { get; set; }
+
+         [Export("videoDuration")]
+         NSNumber VideoDuration { get; set; }
+
+         [Export("mediaCount")]
+         NSNumber MediaCount { get; set; }
+
+
+         [Export("initWithRawType:videoCount:pictureCount:videoDuration:mediaCount:")]
+         IntPtr Constructor(ModeTypeRaw rawType, [NullAllowed] NSNumber videoCount, [NullAllowed] NSNumber pictureCount, [NullAllowed] NSNumber videoDuration, [NullAllowed] NSNumber mediaCount);
+         
+        // Static factory methods
+        [Static]
+        [Export("videoAndPictureWithVideoCount:pictureCount:videoDuration:")]
+        ModeTypeConfig VideoAndPicture(nint videoCount, nint pictureCount, nint videoDuration);
+
+        [Static]
+        [Export("singleVideoWithVideoDuration:")]
+        ModeTypeConfig SingleVideo(nint videoDuration);
+
+        [Static]
+        [Export("singlePicture")]
+        ModeTypeConfig SinglePicture();
+
+        [Static]
+        [Export("singleVideoOrPictureWithVideoDuration:")]
+        ModeTypeConfig SingleVideoOrPicture(nint videoDuration);
+
+        [Static]
+        [Export("videoWithVideoCount:videoDuration:")]
+        ModeTypeConfig Video(nint videoCount, nint videoDuration);
+
+        [Static]
+        [Export("pictureWithPictureCount:")]
+        ModeTypeConfig Picture(nint pictureCount);
+
+        [Static]
+        [Export("videoAndPictureCountedWithMediaCount:videoDuration:")]
+        ModeTypeConfig VideoAndPictureCounted(nint mediaCount, nint videoDuration);
+    }
+
+    // TruvideoCamera binding
+    [BaseType(typeof(NSObject), Name = "_TtC14TruvideoCamera14TruvideoCamera")]
+    [Protocol]
+    [DisableDefaultCtor]
+    interface TruvideoCamera
+    {
+        [Static]
+        [Export("shared")]
+        TruvideoCamera Shared { get; }
+
+        [Export("showCameraWithLensFacing:flashMode:orientation:outputPath:modeConfig:viewController:completion:")]
+        void ShowCamera(LensType lensFacing, FlashMode flashMode, OrientationMode orientation, string outputPath, ModeTypeConfig modeConfig, UIViewController viewController, Action<NSArray<NSString>>  completion);
+
+        [Export("getCameraInfoWithCompletionHandler:")]
+        void GetCameraInfo(Action<NSString, NSError> completionHandler);
+
+       [Export("subscribeToCameraEventsWithCompletionHandler:")]
+        void SubscribeToCameraEvents(Action<NSString> completionHandler);
+    }
 }

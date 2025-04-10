@@ -1,11 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-  <Version>0.0.9</Version>
+    <Version>0.0.9</Version>
     <TargetFramework>net8.0-ios</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>true</ImplicitUsings>
     <IsBindingProject>true</IsBindingProject>
+    <NoBindingEmbedding>true</NoBindingEmbedding>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <RepositoryUrl>https://github.com/Truvideo/truvideo-sdk-camera-net</RepositoryUrl>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <CreatePackage>false</CreatePackage>
+    <MtouchLink>None</MtouchLink>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <CreatePackage>false</CreatePackage>
+    <MtouchLink>SdkOnly</MtouchLink>
   </PropertyGroup>
   <ItemGroup>
     <ObjcBindingApiDefinition Include="ApiDefinition.cs" />
@@ -13,14 +25,20 @@
   </ItemGroup>
   <ItemGroup>
     <NativeReference Include="xcframeworks/TruvideoCamera.xcframework">
-      <Frameworks>Foundation</Frameworks>
       <Kind>Framework</Kind>
       <SmartLink>False</SmartLink>
+      <ForceLoad>True</ForceLoad>
+      <Frameworks>Foundation UIKit AVFoundation CoreMedia</Frameworks>
+      <LinkerFlags>-ObjC -lc++</LinkerFlags>
+      <WeakFrameworks>SwiftUI</WeakFrameworks>
     </NativeReference>
     <NativeReference Include="xcframeworks/TruvideoSdkCamera.xcframework">
-      <Frameworks>Foundation</Frameworks>
       <Kind>Framework</Kind>
       <SmartLink>False</SmartLink>
+      <ForceLoad>True</ForceLoad>
+      <Frameworks>Foundation UIKit AVFoundation CoreMedia</Frameworks>
+      <LinkerFlags>-ObjC -lc++</LinkerFlags>
+      <WeakFrameworks>SwiftUI</WeakFrameworks>
     </NativeReference>
   </ItemGroup>
 </Project>

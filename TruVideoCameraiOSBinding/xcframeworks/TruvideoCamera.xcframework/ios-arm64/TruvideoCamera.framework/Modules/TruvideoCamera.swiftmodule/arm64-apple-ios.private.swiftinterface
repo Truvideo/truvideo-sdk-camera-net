@@ -12,7 +12,80 @@ import _StringProcessing
 import _SwiftConcurrencyShims
 @_inheritsConvenienceInitializers @objc final public class TruvideoCamera : ObjectiveC.NSObject {
   @objc public static let shared: TruvideoCamera.TruvideoCamera
-  @objc final public func showCamera(lensFacing: Swift.String, flashMode: Swift.String, orientation: Swift.String?, outputPath: Swift.String, mode: Swift.String, viewController: UIKit.UIViewController, completion: @escaping (_ paths: [Swift.String]) -> Swift.Void)
+  @objc final public func showCamera(lensFacing: TruvideoCamera.LensType, flashMode: TruvideoCamera.FlashMode, orientation: TruvideoCamera.OrientationMode, outputPath: Swift.String, modeConfig: TruvideoCamera.ModeTypeConfig, viewController: UIKit.UIViewController, completion: @escaping (_ paths: [Swift.String]) -> Swift.Void)
+  @objc final public func getCameraInfo(completionHandler: @escaping (_ result: Swift.String?, _ error: (any Swift.Error)?) -> Swift.Void)
+  @objc final public func subscribeToCameraEvents(completion: @escaping (_ paths: Swift.String) -> Swift.Void)
   @objc override dynamic public init()
   @objc deinit
 }
+@objc public enum LensType : Swift.Int {
+  case back
+  case front
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum FlashMode : Swift.Int {
+  case on
+  case off
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum OrientationMode : Swift.Int {
+  case portrait
+  case landscapeLeft
+  case landscapeRight
+  case portraitReverse
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum ModeTypeRaw : Swift.Int {
+  case videoAndPicture = 0
+  case singleVideo = 1
+  case singlePicture = 2
+  case singleVideoOrPicture = 3
+  case video = 4
+  case picture = 5
+  case videoAndPictureCounted = 6
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public class ModeTypeConfig : ObjectiveC.NSObject {
+  @objc public var rawType: TruvideoCamera.ModeTypeRaw
+  @objc public var videoCount: Foundation.NSNumber?
+  @objc public var pictureCount: Foundation.NSNumber?
+  @objc public var videoDuration: Foundation.NSNumber?
+  @objc public var mediaCount: Foundation.NSNumber?
+  @objc public init(rawType: TruvideoCamera.ModeTypeRaw, videoCount: Foundation.NSNumber? = nil, pictureCount: Foundation.NSNumber? = nil, videoDuration: Foundation.NSNumber? = nil, mediaCount: Foundation.NSNumber? = nil)
+  @objc public static func videoAndPicture(videoCount: Foundation.NSNumber? = nil, pictureCount: Foundation.NSNumber? = nil, videoDuration: Foundation.NSNumber? = nil) -> TruvideoCamera.ModeTypeConfig
+  @objc public static func singleVideo(videoDuration: Foundation.NSNumber? = nil) -> TruvideoCamera.ModeTypeConfig
+  @objc public static func singlePicture() -> TruvideoCamera.ModeTypeConfig
+  @objc public static func singleVideoOrPicture(videoDuration: Foundation.NSNumber? = nil) -> TruvideoCamera.ModeTypeConfig
+  @objc public static func video(videoCount: Foundation.NSNumber? = nil, videoDuration: Foundation.NSNumber? = nil) -> TruvideoCamera.ModeTypeConfig
+  @objc public static func picture(pictureCount: Foundation.NSNumber? = nil) -> TruvideoCamera.ModeTypeConfig
+  @objc public static func videoAndPictureCounted(mediaCount: Foundation.NSNumber? = nil, videoDuration: Foundation.NSNumber? = nil) -> TruvideoCamera.ModeTypeConfig
+  @objc deinit
+}
+extension TruvideoCamera.LensType : Swift.Equatable {}
+extension TruvideoCamera.LensType : Swift.Hashable {}
+extension TruvideoCamera.LensType : Swift.RawRepresentable {}
+extension TruvideoCamera.FlashMode : Swift.Equatable {}
+extension TruvideoCamera.FlashMode : Swift.Hashable {}
+extension TruvideoCamera.FlashMode : Swift.RawRepresentable {}
+extension TruvideoCamera.OrientationMode : Swift.Equatable {}
+extension TruvideoCamera.OrientationMode : Swift.Hashable {}
+extension TruvideoCamera.OrientationMode : Swift.RawRepresentable {}
+extension TruvideoCamera.ModeTypeRaw : Swift.Equatable {}
+extension TruvideoCamera.ModeTypeRaw : Swift.Hashable {}
+extension TruvideoCamera.ModeTypeRaw : Swift.RawRepresentable {}
