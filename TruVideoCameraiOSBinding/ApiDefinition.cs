@@ -59,11 +59,11 @@ namespace TruvideoCameraiOS
         // Static factory methods
         [Static]
         [Export("videoAndPictureWithVideoCount:pictureCount:videoDuration:")]
-        ModeTypeConfig VideoAndPicture(nint videoCount, nint pictureCount, nint videoDuration);
+        ModeTypeConfig VideoAndPicture([NullAllowed] NSNumber videoCount, [NullAllowed] NSNumber pictureCount, [NullAllowed] NSNumber videoDuration);
 
         [Static]
         [Export("singleVideoWithVideoDuration:")]
-        ModeTypeConfig SingleVideo(nint videoDuration);
+        ModeTypeConfig SingleVideo([NullAllowed] NSNumber videoDuration);
 
         [Static]
         [Export("singlePicture")]
@@ -71,19 +71,20 @@ namespace TruvideoCameraiOS
 
         [Static]
         [Export("singleVideoOrPictureWithVideoDuration:")]
-        ModeTypeConfig SingleVideoOrPicture(nint videoDuration);
+        ModeTypeConfig SingleVideoOrPicture([NullAllowed] NSNumber videoDuration);
 
         [Static]
         [Export("videoWithVideoCount:videoDuration:")]
-        ModeTypeConfig Video(nint videoCount, nint videoDuration);
+        ModeTypeConfig Video([NullAllowed] NSNumber videoCount, [NullAllowed] NSNumber videoDuration);
 
         [Static]
         [Export("pictureWithPictureCount:")]
-        ModeTypeConfig Picture(nint pictureCount);
+        ModeTypeConfig Picture([NullAllowed] NSNumber pictureCount);
 
         [Static]
         [Export("videoAndPictureCountedWithMediaCount:videoDuration:")]
-        ModeTypeConfig VideoAndPictureCounted(nint mediaCount, nint videoDuration);
+        ModeTypeConfig VideoAndPictureCounted([NullAllowed] NSNumber mediaCount, [NullAllowed] NSNumber videoDuration);
+
     }
 
     // TruvideoCamera binding
@@ -102,7 +103,7 @@ namespace TruvideoCameraiOS
         [Export("getCameraInfoWithCompletionHandler:")]
         void GetCameraInfo(Action<NSString, NSError> completionHandler);
 
-       [Export("subscribeToCameraEventsWithCompletionHandler:")]
-        void SubscribeToCameraEvents(Action<NSString> completionHandler);
+       [Export("subscribeToCameraEventsWithCompletion:")]
+        void SubscribeToCameraEvents(Action<NSString> completion);
     }
 }
