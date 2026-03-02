@@ -1,7 +1,7 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 6.0.3 effective-5.10 (swiftlang-6.0.3.1.10 clang-1600.0.30.1)
-// swift-module-flags: -target x86_64-apple-ios17.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name TruvideoCamera
-// swift-module-flags-ignorable: -no-verify-emitted-module-interface
+// swift-compiler-version: Apple Swift version 6.1.2 effective-5.10 (swiftlang-6.1.2.1.2 clang-1700.0.13.5)
+// swift-module-flags: -target x86_64-apple-ios17.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name TruvideoCamera
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -interface-compiler-version 6.1.2
 import Combine
 import Swift
 @_exported import TruvideoCamera
@@ -12,7 +12,9 @@ import _StringProcessing
 import _SwiftConcurrencyShims
 @_inheritsConvenienceInitializers @objc final public class TruvideoCamera : ObjectiveC.NSObject {
   @objc public static let shared: TruvideoCamera.TruvideoCamera
-  @objc final public func showCamera(lensFacing: TruvideoCamera.LensType, flashMode: TruvideoCamera.FlashMode, orientation: TruvideoCamera.OrientationMode, outputPath: Swift.String, modeConfig: TruvideoCamera.ModeTypeConfig, viewController: UIKit.UIViewController, completion: @escaping (_ paths: [Swift.String]) -> Swift.Void)
+  @objc final public func showCamera(lensFacing: TruvideoCamera.LensType, flashMode: TruvideoCamera.FlashMode, orientation: TruvideoCamera.OrientationMode, outputPath: Swift.String, modeConfig: TruvideoCamera.ModeTypeConfig, viewController: UIKit.UIViewController, completion: @escaping (_ result: [[Swift.String : Any]]) -> Swift.Void)
+  @objc final public func showARCamera(flashMode: TruvideoCamera.FlashMode, orientation: TruvideoCamera.OrientationMode, modeConfig: TruvideoCamera.ModeTypeConfig, viewController: UIKit.UIViewController, completion: @escaping (_ result: [[Swift.String : Any]]) -> Swift.Void)
+  @objc final public func showScannerCamera(flashMode: TruvideoCamera.FlashMode, orientation: TruvideoCamera.OrientationMode, viewController: UIKit.UIViewController, completion: @escaping (_ result: [[Swift.String : Any]]) -> Swift.Void)
   @objc final public func getCameraInfo(completionHandler: @escaping (_ result: Swift.String?, _ error: (any Swift.Error)?) -> Swift.Void)
   @objc final public func subscribeToCameraEvents(completion: @escaping (_ paths: Swift.String) -> Swift.Void)
   @objc override dynamic public init()

@@ -132,7 +132,7 @@
               {
                 "kind": "TypeFunc",
                 "name": "Function",
-                "printedName": "([Swift.String]) -> ()",
+                "printedName": "([[Swift.String : Any]]) -> ()",
                 "children": [
                   {
                     "kind": "TypeNominal",
@@ -142,13 +142,26 @@
                   {
                     "kind": "TypeNominal",
                     "name": "Array",
-                    "printedName": "[Swift.String]",
+                    "printedName": "[[Swift.String : Any]]",
                     "children": [
                       {
                         "kind": "TypeNominal",
-                        "name": "String",
-                        "printedName": "Swift.String",
-                        "usr": "s:SS"
+                        "name": "Dictionary",
+                        "printedName": "[Swift.String : Any]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "ProtocolComposition",
+                            "printedName": "Any"
+                          }
+                        ],
+                        "usr": "s:SD"
                       }
                     ],
                     "usr": "s:Sa"
@@ -158,9 +171,175 @@
             ],
             "declKind": "Func",
             "usr": "c:@M@TruvideoCamera@objc(cs)TruvideoCamera(im)showCameraWithLensFacing:flashMode:orientation:outputPath:modeConfig:viewController:completion:",
-            "mangledName": "$s14TruvideoCameraAAC04showB010lensFacing9flashMode11orientation10outputPath10modeConfig14viewController10completionyAA8LensTypeO_AA05FlashG0OAA011OrientationG0OSSAA0gqL0CSo06UIViewN0CySaySSGctF",
+            "mangledName": "$s14TruvideoCameraAAC04showB010lensFacing9flashMode11orientation10outputPath10modeConfig14viewController10completionyAA8LensTypeO_AA05FlashG0OAA011OrientationG0OSSAA0gqL0CSo06UIViewN0CySaySDySSypGGctF",
             "moduleName": "TruvideoCamera",
             "objc_name": "showCameraWithLensFacing:flashMode:orientation:outputPath:modeConfig:viewController:completion:",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "showARCamera",
+            "printedName": "showARCamera(flashMode:orientation:modeConfig:viewController:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "FlashMode",
+                "printedName": "TruvideoCamera.FlashMode",
+                "usr": "c:@M@TruvideoCamera@E@FlashMode"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "OrientationMode",
+                "printedName": "TruvideoCamera.OrientationMode",
+                "usr": "c:@M@TruvideoCamera@E@OrientationMode"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ModeTypeConfig",
+                "printedName": "TruvideoCamera.ModeTypeConfig",
+                "usr": "c:@M@TruvideoCamera@objc(cs)ModeTypeConfig"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIViewController",
+                "printedName": "UIKit.UIViewController",
+                "usr": "c:objc(cs)UIViewController"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "([[Swift.String : Any]]) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[[Swift.String : Any]]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Dictionary",
+                        "printedName": "[Swift.String : Any]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "ProtocolComposition",
+                            "printedName": "Any"
+                          }
+                        ],
+                        "usr": "s:SD"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@TruvideoCamera@objc(cs)TruvideoCamera(im)showARCameraWithFlashMode:orientation:modeConfig:viewController:completion:",
+            "mangledName": "$s14TruvideoCameraAAC12showARCamera9flashMode11orientation10modeConfig14viewController10completionyAA05FlashF0O_AA011OrientationF0OAA0f4TypeI0CSo06UIViewK0CySaySDySSypGGctF",
+            "moduleName": "TruvideoCamera",
+            "objc_name": "showARCameraWithFlashMode:orientation:modeConfig:viewController:completion:",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "showScannerCamera",
+            "printedName": "showScannerCamera(flashMode:orientation:viewController:completion:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "FlashMode",
+                "printedName": "TruvideoCamera.FlashMode",
+                "usr": "c:@M@TruvideoCamera@E@FlashMode"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "OrientationMode",
+                "printedName": "TruvideoCamera.OrientationMode",
+                "usr": "c:@M@TruvideoCamera@E@OrientationMode"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIViewController",
+                "printedName": "UIKit.UIViewController",
+                "usr": "c:objc(cs)UIViewController"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "([[Swift.String : Any]]) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[[Swift.String : Any]]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Dictionary",
+                        "printedName": "[Swift.String : Any]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "String",
+                            "printedName": "Swift.String",
+                            "usr": "s:SS"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "ProtocolComposition",
+                            "printedName": "Any"
+                          }
+                        ],
+                        "usr": "s:SD"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@TruvideoCamera@objc(cs)TruvideoCamera(im)showScannerCameraWithFlashMode:orientation:viewController:completion:",
+            "mangledName": "$s14TruvideoCameraAAC011showScannerB09flashMode11orientation14viewController10completionyAA05FlashF0O_AA011OrientationF0OSo06UIViewI0CySaySDySSypGGctF",
+            "moduleName": "TruvideoCamera",
+            "objc_name": "showScannerCameraWithFlashMode:orientation:viewController:completion:",
             "declAttributes": [
               "Final",
               "AccessControl",
@@ -2651,86 +2830,86 @@
   },
   "ConstValues": [
     {
-      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpdateiOSSDK\/TruVideoSampleIOSApp\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
+      "filePath": "\/Users\/apple\/Downloads\/maui-sdk-demo-app-source\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
       "kind": "IntegerLiteral",
-      "offset": 4129,
+      "offset": 7498,
       "length": 5,
       "value": "1"
     },
     {
-      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpdateiOSSDK\/TruVideoSampleIOSApp\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
+      "filePath": "\/Users\/apple\/Downloads\/maui-sdk-demo-app-source\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
       "kind": "IntegerLiteral",
-      "offset": 4194,
+      "offset": 7563,
       "length": 3,
       "value": "1"
     },
     {
-      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpdateiOSSDK\/TruVideoSampleIOSApp\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
+      "filePath": "\/Users\/apple\/Downloads\/maui-sdk-demo-app-source\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
       "kind": "IntegerLiteral",
-      "offset": 4269,
+      "offset": 7638,
       "length": 13,
       "value": "1"
     },
     {
-      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpdateiOSSDK\/TruVideoSampleIOSApp\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
+      "filePath": "\/Users\/apple\/Downloads\/maui-sdk-demo-app-source\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
       "kind": "IntegerLiteral",
-      "offset": 4292,
+      "offset": 7661,
       "length": 14,
       "value": "2"
     },
     {
-      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpdateiOSSDK\/TruVideoSampleIOSApp\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
+      "filePath": "\/Users\/apple\/Downloads\/maui-sdk-demo-app-source\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
       "kind": "IntegerLiteral",
-      "offset": 4316,
+      "offset": 7685,
       "length": 15,
       "value": "3"
     },
     {
-      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpdateiOSSDK\/TruVideoSampleIOSApp\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
+      "filePath": "\/Users\/apple\/Downloads\/maui-sdk-demo-app-source\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
       "kind": "IntegerLiteral",
-      "offset": 4399,
+      "offset": 7768,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpdateiOSSDK\/TruVideoSampleIOSApp\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
+      "filePath": "\/Users\/apple\/Downloads\/maui-sdk-demo-app-source\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
       "kind": "IntegerLiteral",
-      "offset": 4424,
+      "offset": 7793,
       "length": 1,
       "value": "1"
     },
     {
-      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpdateiOSSDK\/TruVideoSampleIOSApp\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
+      "filePath": "\/Users\/apple\/Downloads\/maui-sdk-demo-app-source\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
       "kind": "IntegerLiteral",
-      "offset": 4451,
+      "offset": 7820,
       "length": 1,
       "value": "2"
     },
     {
-      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpdateiOSSDK\/TruVideoSampleIOSApp\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
+      "filePath": "\/Users\/apple\/Downloads\/maui-sdk-demo-app-source\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
       "kind": "IntegerLiteral",
-      "offset": 4485,
+      "offset": 7854,
       "length": 1,
       "value": "3"
     },
     {
-      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpdateiOSSDK\/TruVideoSampleIOSApp\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
+      "filePath": "\/Users\/apple\/Downloads\/maui-sdk-demo-app-source\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
       "kind": "IntegerLiteral",
-      "offset": 4504,
+      "offset": 7873,
       "length": 1,
       "value": "4"
     },
     {
-      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpdateiOSSDK\/TruVideoSampleIOSApp\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
+      "filePath": "\/Users\/apple\/Downloads\/maui-sdk-demo-app-source\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
       "kind": "IntegerLiteral",
-      "offset": 4525,
+      "offset": 7894,
       "length": 1,
       "value": "5"
     },
     {
-      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpdateiOSSDK\/TruVideoSampleIOSApp\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
+      "filePath": "\/Users\/apple\/Downloads\/maui-sdk-demo-app-source\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
       "kind": "IntegerLiteral",
-      "offset": 4561,
+      "offset": 7930,
       "length": 1,
       "value": "6"
     }

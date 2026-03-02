@@ -98,12 +98,29 @@ namespace TruvideoCameraiOS
         TruvideoCamera Shared { get; }
 
         [Export("showCameraWithLensFacing:flashMode:orientation:outputPath:modeConfig:viewController:completion:")]
-        void ShowCamera(LensType lensFacing, FlashMode flashMode, OrientationMode orientation, string outputPath, ModeTypeConfig modeConfig, UIViewController viewController, Action<NSArray<NSString>>  completion);
+        void ShowCamera(LensType lensFacing, FlashMode flashMode, OrientationMode orientation, string outputPath, ModeTypeConfig modeConfig, UIViewController viewController, Action<NSArray<NSDictionary>> completion);
 
         [Export("getCameraInfoWithCompletionHandler:")]
         void GetCameraInfo(Action<NSString, NSError> completionHandler);
 
        [Export("subscribeToCameraEventsWithCompletion:")]
         void SubscribeToCameraEvents(Action<NSString> completion);
+        
+        [Export("showARCameraWithFlashMode:orientation:modeConfig:viewController:completion:")]
+        void ShowARCamera(
+            FlashMode flashMode,
+            OrientationMode orientation,
+            ModeTypeConfig modeConfig,
+            UIViewController viewController,
+            [BlockCallback] Action<NSArray<NSDictionary>> completion
+        );
+        
+        [Export("showScannerCameraWithFlashMode:orientation:viewController:completion:")]
+        void ShowScannerCamera(
+            FlashMode flashMode,
+            OrientationMode orientation,
+            UIViewController viewController,
+            [BlockCallback] Action<NSArray<NSDictionary>> completion
+        );
     }
 }

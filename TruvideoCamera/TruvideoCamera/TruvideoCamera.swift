@@ -10,19 +10,134 @@ final public class TruvideoCamera: NSObject {
 
     var disposeBag = Set<AnyCancellable>()
     
-    @objc public func showCamera(lensFacing: LensType, flashMode: FlashMode, orientation: OrientationMode, outputPath: String, modeConfig: ModeTypeConfig, viewController: UIViewController, completion: @escaping (_ paths: [String]) -> Void) {
-        
+    @objc public func showCamera(
+        lensFacing: LensType,
+        flashMode: FlashMode,
+        orientation: OrientationMode,
+        outputPath: String,
+        modeConfig: ModeTypeConfig,
+        viewController: UIViewController,
+        completion: @escaping (_ result: [[String: Any]]) -> Void
+    ) {
+
         let lensType = lensFacingType(lensFacing)
         let flashType = flashModeType(flashMode)
         let orientationType = videoOrientationType(orientation)
         let modetype = convertModeType(modeConfig)
-        
-        let configuration = TruvideoSdkCameraConfiguration(lensFacing: lensType, flashMode: flashType, orientation: orientationType, outputPath: outputPath, frontResolutions: [], frontResolution: nil, backResolutions: [], backResolution: nil, mode: modetype)
-        
-        viewController.presentTruvideoSdkCameraView(preset: configuration, onComplete: { result in
-            completion(result.media.map({ $0.filePath }))
+
+        let configuration = TruvideoSdkCameraConfiguration(
+                    backResolution: .hd1280x720,
+                    backResolutions: [],
+                    flashMode: flashType,
+                    frontResolution: .hd1920x1080,
+                    frontResolutions: [],
+                    lensFacing: lensType,
+                    mode: modetype,
+                    orientation: orientationType,
+                    outputPath: outputPath,
+                    
+                )
+    
+        viewController.presentTruvideoSdkCameraView(
+            preset: configuration,
+            onComplete: { result in
+
+                let mediaList: [[String: Any]] = result.media.compactMap { item in
+
+                    let media = TruvideoSdkCameraMedia(
+                        id: item.id,
+                        createdAt: item.createdAt,
+                        duration: item.duration,
+                        filePath: item.filePath,
+                        lensFacing: item.lensFacing,
+                        orientation: item.orientation,
+                        resolution: item.resolution,
+                        type: item.type,
+                        
+                        
+                    )
+
+                    return media.toDictionary()
+                }
+
+                completion(mediaList)
+            }
+        )
+    }
+    
+    @objc public func showARCamera(
+        flashMode: FlashMode,
+        orientation: OrientationMode,
+        modeConfig: ModeTypeConfig,
+        viewController: UIViewController,
+        completion: @escaping (_ result: [[String: Any]]) -> Void
+    ) {
+
+        let flashType = flashModeType(flashMode)
+        let orientationType = videoOrientationType(orientation)
+        let modeType = convertModeType(modeConfig)
+
+        let configuration = TruvideoSdkARCameraConfiguration(
+            flashMode: flashType,
+            mode: modeType, orientation: orientationType
+        )
+
+        viewController.presentTruvideoSdkARCameraView(preset: configuration, onComplete: { result in
+            let mediaList: [[String: Any]] = result.media.compactMap { item in
+
+                let media = TruvideoSdkCameraMedia(
+                    id: item.id,
+                    createdAt: item.createdAt,
+                    duration: item.duration,
+                    filePath: item.filePath,
+                    lensFacing: item.lensFacing,
+                    orientation: item.orientation,
+                    resolution: item.resolution,
+                    type: item.type,
+                )
+
+                return media.toDictionary()
+            }
+
+            completion(mediaList)
         })
     }
+
+    @objc public func showScannerCamera(
+        flashMode: FlashMode,
+        orientation: OrientationMode,
+        viewController: UIViewController,
+        completion: @escaping (_ result: [[String: Any]]) -> Void
+    ) {
+
+        let flashType = flashModeType(flashMode)
+        let orientationType = videoOrientationType(orientation)
+
+        let configuration = TruvideoSdkScannerCameraConfiguration(
+            flashMode: flashType,
+            orientation: orientationType
+        )
+        
+//        viewController.presentTruvideoSdkScannerCameraView(
+//            preset: configuration,
+//            onComplete: { scannerCode in
+//
+//                // Scanner dismissed / cancelled
+//                guard let code = scannerCode else {
+//                    completion([])
+//                    return
+//                }
+//
+//                let result: [String: Any] = [
+//                    "data": code.data,
+//                    "format": code.format.rawValue
+//                ]
+//
+//                completion([result])
+//            }
+//        )
+    }
+
     
     @objc public func getCameraInfo(completionHandler: @escaping (_ result: String?, _ error: Error?) -> Void) {
         Task {
@@ -35,7 +150,10 @@ final public class TruvideoCamera: NSObject {
                 completionHandler(nil, error)
             }
         }
-    }
+    }/*
+      SDK does not contain 'libarclite' at the path '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/arc/libarclite_iphoneos.a'; try increasing the minimum deployment target
+
+      */
 
     func lensFacingType(_ type: LensType) -> TruvideoSdkCameraLensFacing {
         switch type {
@@ -73,10 +191,7 @@ final public class TruvideoCamera: NSObject {
             
         case .landscapeRight:
             return .landscapeRight
-            
-        case .portraitReverse:
-            return .portraitReverse
-            
+
         default:
             return .portrait
         }
@@ -193,5 +308,18 @@ public class ModeTypeConfig: NSObject {
 
     @objc public static func videoAndPictureCounted(mediaCount: NSNumber? = nil, videoDuration: NSNumber? = nil) -> ModeTypeConfig {
         return ModeTypeConfig(rawType: .videoAndPictureCounted, videoDuration: videoDuration, mediaCount: mediaCount)
+    }
+}
+
+extension Encodable {
+    func toDictionary() -> [String: Any]? {
+        do {
+            let data = try JSONEncoder().encode(self)
+            let json = try JSONSerialization.jsonObject(with: data)
+            return json as? [String: Any]
+        } catch {
+            print("Encoding error:", error)
+            return nil
+        }
     }
 }
