@@ -154,6 +154,19 @@ final public class TruvideoCamera: NSObject {
       SDK does not contain 'libarclite' at the path '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/arc/libarclite_iphoneos.a'; try increasing the minimum deployment target
 
       */
+    
+    func imageFormatType(_ type: imageType) -> TruvideoSdkCameraImageFormat {
+        switch type {
+        case .jpeg:
+            return .jpeg
+            
+        case .png:
+            return .png
+        
+        default:
+            return .jpeg
+        }
+    }
 
     func lensFacingType(_ type: LensType) -> TruvideoSdkCameraLensFacing {
         switch type {
@@ -231,6 +244,11 @@ final public class TruvideoCamera: NSObject {
                }
                .store(in: &disposeBag)
        }
+}
+
+enum imageType {
+    case jpeg
+    case png
 }
 
 @objc public enum LensType: Int {

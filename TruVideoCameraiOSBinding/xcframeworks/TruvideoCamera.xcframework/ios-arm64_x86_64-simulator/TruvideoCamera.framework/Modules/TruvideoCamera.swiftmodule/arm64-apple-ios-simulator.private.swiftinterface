@@ -1,7 +1,7 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 6.1.2 effective-5.10 (swiftlang-6.1.2.1.2 clang-1700.0.13.5)
+// swift-compiler-version: Apple Swift version 6.2.3 effective-5.10 (swiftlang-6.2.3.3.21 clang-1700.6.3.2)
 // swift-module-flags: -target arm64-apple-ios17.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name TruvideoCamera
-// swift-module-flags-ignorable: -no-verify-emitted-module-interface -interface-compiler-version 6.1.2
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.2.3
 import Combine
 import Swift
 @_exported import TruvideoCamera
@@ -15,7 +15,9 @@ import _SwiftConcurrencyShims
   @objc final public func showCamera(lensFacing: TruvideoCamera.LensType, flashMode: TruvideoCamera.FlashMode, orientation: TruvideoCamera.OrientationMode, outputPath: Swift.String, modeConfig: TruvideoCamera.ModeTypeConfig, viewController: UIKit.UIViewController, completion: @escaping (_ result: [[Swift.String : Any]]) -> Swift.Void)
   @objc final public func showARCamera(flashMode: TruvideoCamera.FlashMode, orientation: TruvideoCamera.OrientationMode, modeConfig: TruvideoCamera.ModeTypeConfig, viewController: UIKit.UIViewController, completion: @escaping (_ result: [[Swift.String : Any]]) -> Swift.Void)
   @objc final public func showScannerCamera(flashMode: TruvideoCamera.FlashMode, orientation: TruvideoCamera.OrientationMode, viewController: UIKit.UIViewController, completion: @escaping (_ result: [[Swift.String : Any]]) -> Swift.Void)
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc final public func getCameraInfo(completionHandler: @escaping (_ result: Swift.String?, _ error: (any Swift.Error)?) -> Swift.Void)
+  #endif
   @objc final public func subscribeToCameraEvents(completion: @escaping (_ paths: Swift.String) -> Swift.Void)
   @objc override dynamic public init()
   @objc deinit
@@ -23,7 +25,9 @@ import _SwiftConcurrencyShims
 @objc public enum LensType : Swift.Int {
   case back
   case front
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
+  #endif
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
@@ -32,7 +36,9 @@ import _SwiftConcurrencyShims
 @objc public enum FlashMode : Swift.Int {
   case on
   case off
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
+  #endif
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
@@ -43,7 +49,9 @@ import _SwiftConcurrencyShims
   case landscapeLeft
   case landscapeRight
   case portraitReverse
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
+  #endif
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
@@ -57,7 +65,9 @@ import _SwiftConcurrencyShims
   case video = 4
   case picture = 5
   case videoAndPictureCounted = 6
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
+  #endif
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {
     get
@@ -69,14 +79,28 @@ import _SwiftConcurrencyShims
   @objc public var pictureCount: Foundation.NSNumber?
   @objc public var videoDuration: Foundation.NSNumber?
   @objc public var mediaCount: Foundation.NSNumber?
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public init(rawType: TruvideoCamera.ModeTypeRaw, videoCount: Foundation.NSNumber? = nil, pictureCount: Foundation.NSNumber? = nil, videoDuration: Foundation.NSNumber? = nil, mediaCount: Foundation.NSNumber? = nil)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public static func videoAndPicture(videoCount: Foundation.NSNumber? = nil, pictureCount: Foundation.NSNumber? = nil, videoDuration: Foundation.NSNumber? = nil) -> TruvideoCamera.ModeTypeConfig
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public static func singleVideo(videoDuration: Foundation.NSNumber? = nil) -> TruvideoCamera.ModeTypeConfig
+  #endif
   @objc public static func singlePicture() -> TruvideoCamera.ModeTypeConfig
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public static func singleVideoOrPicture(videoDuration: Foundation.NSNumber? = nil) -> TruvideoCamera.ModeTypeConfig
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public static func video(videoCount: Foundation.NSNumber? = nil, videoDuration: Foundation.NSNumber? = nil) -> TruvideoCamera.ModeTypeConfig
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public static func picture(pictureCount: Foundation.NSNumber? = nil) -> TruvideoCamera.ModeTypeConfig
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   @objc public static func videoAndPictureCounted(mediaCount: Foundation.NSNumber? = nil, videoDuration: Foundation.NSNumber? = nil) -> TruvideoCamera.ModeTypeConfig
+  #endif
   @objc deinit
 }
 extension TruvideoCamera.LensType : Swift.Equatable {}
