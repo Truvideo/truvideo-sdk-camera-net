@@ -27,10 +27,10 @@ final public class TruvideoCamera: NSObject {
 
         let configuration = TruvideoSdkCameraConfiguration(
                     backResolution: .hd1280x720,
-                    backResolutions: [],
+                    //backResolutions: [],
                     flashMode: flashType,
                     frontResolution: .hd1920x1080,
-                    frontResolutions: [],
+                    //frontResolutions: [],
                     lensFacing: lensType,
                     mode: modetype,
                     orientation: orientationType,
@@ -194,7 +194,7 @@ final public class TruvideoCamera: NSObject {
         }
     }
     
-    func videoOrientationType(_ orientation: OrientationMode) -> TruvideoSdkCameraOrientation {
+    func videoOrientationType(_ orientation: OrientationMode) -> TruvideoSdkCameraOrientation? {
         switch orientation {
         case .portrait:
             return .portrait
@@ -205,8 +205,11 @@ final public class TruvideoCamera: NSObject {
         case .landscapeRight:
             return .landscapeRight
 
+        case .any:
+            return nil
+
         default:
-            return .portrait
+            return nil
         }
     }
     
@@ -236,14 +239,58 @@ final public class TruvideoCamera: NSObject {
     }
 
     
-   @objc public func subscribeToCameraEvents(completion: @escaping (_ paths: String) -> Void) {
-           TruvideoSdkCamera
-               .events
-               .sink { cameraEvent in
-                   completion("cameraEvent: \(cameraEvent)")
-               }
-               .store(in: &disposeBag)
-       }
+//   @objc public func subscribeToCameraEvents(completion: @escaping (_ paths: String) -> Void) {
+//           TruvideoSdkCamera
+//               .events
+//               .sink { cameraEvent in
+//                   completion("cameraEvent: \(cameraEvent)")
+//               }
+//               .store(in: &disposeBag)
+//       }
+    
+    
+    @objc public func subscribeToCameraEvents(completion: @escaping (_ paths: String) -> Void) {
+        TruvideoSdkCamera
+            .events
+            .sink { event in
+                switch event.type {
+                case .truvideoSdkCameraEventRecordingPaused:
+                    completion(self.cameraEventPayload(type: "recordingPaused"))
+                    
+                case let .truvideoSdkCameraEventRecordingStarted(_, orientation, _):
+                    completion(self.cameraEventPayload(type: "recordingStarted", orientation: orientation))
+                    
+                case let .truvideoSdkCameraEventRecordingFinished(media):
+                    completion(self.cameraEventPayload(type: "recordingFinished", orientation: media.orientation))
+                    
+                default:
+                    completion(self.cameraEventPayload(type: "cameraEvent"))
+                }
+            }
+            .store(in: &disposeBag)
+    }
+
+    @objc public func clearCameraEventSubscriptions() {
+        disposeBag.removeAll()
+    }
+
+    private func cameraEventPayload(type: String, orientation: TruvideoSdkCameraOrientation? = nil) -> String {
+        var payload: [String: String] = ["type": type]
+
+        if let orientation {
+            payload["orientation"] = orientation.rawValue
+        }
+
+        guard
+            let data = try? JSONSerialization.data(withJSONObject: payload),
+            let json = String(data: data, encoding: .utf8)
+        else {
+            return #"{"type":"cameraEvent"}"#
+        }
+
+        return json
+    }
+    
 }
 
 enum imageType {
@@ -266,6 +313,7 @@ enum imageType {
     case landscapeLeft
     case landscapeRight
     case portraitReverse
+    case any
 }
 
 @objc

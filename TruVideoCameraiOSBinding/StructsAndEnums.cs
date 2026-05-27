@@ -34,7 +34,8 @@ namespace TruvideoCameraiOS
         Portrait = 0,
         LandscapeLeft = 1,
         LandscapeRight = 2,
-        PortraitReverse = 3
+        PortraitReverse = 3,
+        Any = 4
     }
     
 }

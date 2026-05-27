@@ -351,6 +351,7 @@ typedef SWIFT_ENUM(NSInteger, OrientationMode, open) {
   OrientationModeLandscapeLeft = 1,
   OrientationModeLandscapeRight = 2,
   OrientationModePortraitReverse = 3,
+  OrientationModeAny = 4,
 };
 
 @class NSString;
@@ -364,6 +365,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TruvideoCame
 - (void)showScannerCameraWithFlashMode:(enum FlashMode)flashMode orientation:(enum OrientationMode)orientation viewController:(UIViewController * _Nonnull)viewController completion:(void (^ _Nonnull)(NSArray<NSDictionary<NSString *, id> *> * _Nonnull))completion;
 - (void)getCameraInfoWithCompletionHandler:(void (^ _Nonnull)(NSString * _Nullable, NSError * _Nullable))completionHandler;
 - (void)subscribeToCameraEventsWithCompletion:(void (^ _Nonnull)(NSString * _Nonnull))completion;
+- (void)clearCameraEventSubscriptions;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 

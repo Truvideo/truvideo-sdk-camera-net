@@ -105,6 +105,9 @@ namespace TruvideoCameraiOS
 
        [Export("subscribeToCameraEventsWithCompletion:")]
         void SubscribeToCameraEvents(Action<NSString> completion);
+
+        [Export("clearCameraEventSubscriptions")]
+        void ClearCameraEventSubscriptions();
         
         [Export("showARCameraWithFlashMode:orientation:modeConfig:viewController:completion:")]
         void ShowARCamera(

@@ -19,6 +19,7 @@ import _SwiftConcurrencyShims
   @objc final public func getCameraInfo(completionHandler: @escaping (_ result: Swift.String?, _ error: (any Swift.Error)?) -> Swift.Void)
   #endif
   @objc final public func subscribeToCameraEvents(completion: @escaping (_ paths: Swift.String) -> Swift.Void)
+  @objc final public func clearCameraEventSubscriptions()
   @objc override dynamic public init()
   @objc deinit
 }
@@ -49,6 +50,7 @@ import _SwiftConcurrencyShims
   case landscapeLeft
   case landscapeRight
   case portraitReverse
+  case any
   #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.Int)
   #endif

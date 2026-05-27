@@ -454,6 +454,29 @@
             "declAttributes": [
               "Final",
               "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "clearCameraEventSubscriptions",
+            "printedName": "clearCameraEventSubscriptions()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@TruvideoCamera@objc(cs)TruvideoCamera(im)clearCameraEventSubscriptions",
+            "mangledName": "$s14TruvideoCameraAAC05clearB18EventSubscriptionsyyF",
+            "moduleName": "TruvideoCamera",
+            "declAttributes": [
+              "Final",
+              "AccessControl",
               "ObjC"
             ],
             "funcSelfKind": "NonMutating"
@@ -1177,6 +1200,47 @@
               "ObjC"
             ],
             "fixedbinaryorder": 3
+          },
+          {
+            "kind": "Var",
+            "name": "any",
+            "printedName": "any",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(TruvideoCamera.OrientationMode.Type) -> TruvideoCamera.OrientationMode",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "OrientationMode",
+                    "printedName": "TruvideoCamera.OrientationMode",
+                    "usr": "c:@M@TruvideoCamera@E@OrientationMode"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "TruvideoCamera.OrientationMode.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "OrientationMode",
+                        "printedName": "TruvideoCamera.OrientationMode",
+                        "usr": "c:@M@TruvideoCamera@E@OrientationMode"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@TruvideoCamera@E@OrientationMode@OrientationModeAny",
+            "mangledName": "$s14TruvideoCamera15OrientationModeO3anyyA2CmF",
+            "moduleName": "TruvideoCamera",
+            "declAttributes": [
+              "ObjC"
+            ],
+            "fixedbinaryorder": 4
           },
           {
             "kind": "Constructor",
@@ -2832,84 +2896,91 @@
     {
       "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpgradeSDK79\/19MAR\/maui-sdk-demo-app-source\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
       "kind": "IntegerLiteral",
-      "offset": 7945,
+      "offset": 9598,
       "length": 5,
       "value": "1"
     },
     {
       "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpgradeSDK79\/19MAR\/maui-sdk-demo-app-source\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
       "kind": "IntegerLiteral",
-      "offset": 8010,
+      "offset": 9663,
       "length": 3,
       "value": "1"
     },
     {
       "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpgradeSDK79\/19MAR\/maui-sdk-demo-app-source\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
       "kind": "IntegerLiteral",
-      "offset": 8085,
+      "offset": 9738,
       "length": 13,
       "value": "1"
     },
     {
       "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpgradeSDK79\/19MAR\/maui-sdk-demo-app-source\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
       "kind": "IntegerLiteral",
-      "offset": 8108,
+      "offset": 9761,
       "length": 14,
       "value": "2"
     },
     {
       "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpgradeSDK79\/19MAR\/maui-sdk-demo-app-source\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
       "kind": "IntegerLiteral",
-      "offset": 8132,
+      "offset": 9785,
       "length": 15,
       "value": "3"
     },
     {
       "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpgradeSDK79\/19MAR\/maui-sdk-demo-app-source\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
       "kind": "IntegerLiteral",
-      "offset": 8215,
+      "offset": 9810,
+      "length": 3,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpgradeSDK79\/19MAR\/maui-sdk-demo-app-source\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
+      "kind": "IntegerLiteral",
+      "offset": 9881,
       "length": 1,
       "value": "0"
     },
     {
       "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpgradeSDK79\/19MAR\/maui-sdk-demo-app-source\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
       "kind": "IntegerLiteral",
-      "offset": 8240,
+      "offset": 9906,
       "length": 1,
       "value": "1"
     },
     {
       "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpgradeSDK79\/19MAR\/maui-sdk-demo-app-source\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
       "kind": "IntegerLiteral",
-      "offset": 8267,
+      "offset": 9933,
       "length": 1,
       "value": "2"
     },
     {
       "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpgradeSDK79\/19MAR\/maui-sdk-demo-app-source\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
       "kind": "IntegerLiteral",
-      "offset": 8301,
+      "offset": 9967,
       "length": 1,
       "value": "3"
     },
     {
       "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpgradeSDK79\/19MAR\/maui-sdk-demo-app-source\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
       "kind": "IntegerLiteral",
-      "offset": 8320,
+      "offset": 9986,
       "length": 1,
       "value": "4"
     },
     {
       "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpgradeSDK79\/19MAR\/maui-sdk-demo-app-source\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
       "kind": "IntegerLiteral",
-      "offset": 8341,
+      "offset": 10007,
       "length": 1,
       "value": "5"
     },
     {
       "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpgradeSDK79\/19MAR\/maui-sdk-demo-app-source\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
       "kind": "IntegerLiteral",
-      "offset": 8377,
+      "offset": 10043,
       "length": 1,
       "value": "6"
     }
