@@ -1,0 +1,468 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.0 effective-5.10 (swiftlang-6.0.0.9.10 clang-1600.0.26.2)
+// swift-module-flags: -target arm64-apple-ios15.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name TruVideoMediaProcessing
+import AVFoundation
+import AVKit
+import Foundation
+import ImageIO
+import NCKit
+import Swift
+@_exported import TruVideoMediaProcessing
+@_spi(Internal) import TruvideoSdk
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+public struct AnchorPoint : Swift.Sendable, Swift.Hashable {
+  public let x: Swift.Double
+  public let y: Swift.Double
+  public static let bottom: TruVideoMediaProcessing.AnchorPoint
+  public static let bottomLeading: TruVideoMediaProcessing.AnchorPoint
+  public static let bottomTrailing: TruVideoMediaProcessing.AnchorPoint
+  public static let center: TruVideoMediaProcessing.AnchorPoint
+  public static let leading: TruVideoMediaProcessing.AnchorPoint
+  public static let top: TruVideoMediaProcessing.AnchorPoint
+  public static let topLeading: TruVideoMediaProcessing.AnchorPoint
+  public static let topTrailing: TruVideoMediaProcessing.AnchorPoint
+  public static let trailing: TruVideoMediaProcessing.AnchorPoint
+  public init(x: Swift.Double, y: Swift.Double)
+  public func hash(into hasher: inout Swift.Hasher)
+  public static func == (a: TruVideoMediaProcessing.AnchorPoint, b: TruVideoMediaProcessing.AnchorPoint) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers final public class AudioNoiseCanceller : Swift.Sendable {
+  convenience public init()
+  @objc deinit
+  final public func processFile(at url: Foundation.URL, to destination: Foundation.URL? = nil) async throws
+  final public func process(_ buffer: AVFAudio.AVAudioPCMBuffer) async throws -> AVFAudio.AVAudioPCMBuffer
+}
+public enum AudioNoiseCancellerError : Swift.Error, Swift.Sendable {
+  case processingFailed(TruVideoMediaProcessing.AudioNoiseCancellerError.Context)
+  public struct Context : Swift.Sendable {
+    public let debugDescription: Swift.String
+    public init(debugDescription: Swift.String)
+  }
+}
+public enum ClipShape : Swift.Sendable, Swift.Hashable {
+  case circle
+  case rectangle
+  case roundedRectangle(TruVideoMediaProcessing.RoundedRect)
+  public func hash(into hasher: inout Swift.Hasher)
+  public static func == (a: TruVideoMediaProcessing.ClipShape, b: TruVideoMediaProcessing.ClipShape) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct RoundedRect : Swift.Sendable, Swift.Hashable {
+  public let cornerRadius: CoreFoundation.CGFloat
+  public let style: TruVideoMediaProcessing.RoundedRect.CornerStyle
+  public enum CornerStyle : Swift.Sendable, Swift.Hashable {
+    case continuous
+    public static func == (a: TruVideoMediaProcessing.RoundedRect.CornerStyle, b: TruVideoMediaProcessing.RoundedRect.CornerStyle) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public init(cornerRadius: CoreFoundation.CGFloat, style: TruVideoMediaProcessing.RoundedRect.CornerStyle = .continuous)
+  public func hash(into hasher: inout Swift.Hasher)
+  public static func == (a: TruVideoMediaProcessing.RoundedRect, b: TruVideoMediaProcessing.RoundedRect) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum ContentMode : Swift.Sendable {
+  case fit
+  case fill
+  case scaleToFill
+  public static func == (a: TruVideoMediaProcessing.ContentMode, b: TruVideoMediaProcessing.ContentMode) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public protocol FFMPEGCommandExecutor {
+  func cancelCommandExecution(sessionId: Swift.Int)
+  @discardableResult
+  func executeFFMPEGCommand(_ command: Swift.String, onUpdateSessionId: ((Swift.Int) -> Swift.Void)?) async throws -> Swift.Result<Swift.Void, any Swift.Error>
+  @discardableResult
+  func executeFFMPEGProbeCommand(_ command: Swift.String) async throws -> TruVideoMediaProcessing.ExecutionResult
+  func getMediaInformation(_ url: Foundation.URL) async throws -> TruVideoMediaProcessing.TruvideoSdkVideoInformation
+}
+extension TruVideoMediaProcessing.FFMPEGCommandExecutor {
+  @discardableResult
+  public func executeFFMPEGCommand(_ command: Swift.String, onUpdateSessionId: ((Swift.Int) -> Swift.Void)? = nil) async throws -> Swift.Result<Swift.Void, any Swift.Error>
+}
+public struct ExecutionResult {
+}
+public protocol VideoTransformProvider {
+  func getTransform(for url: Foundation.URL) async throws -> CoreFoundation.CGAffineTransform
+}
+public class AVAssetVideoTransformProvider : TruVideoMediaProcessing.VideoTransformProvider {
+  public init()
+  public func getTransform(for url: Foundation.URL) async throws -> CoreFoundation.CGAffineTransform
+  @objc deinit
+}
+final public class FFMPEGCommandExecutorImplementation : TruVideoMediaProcessing.FFMPEGCommandExecutor {
+  public init(transformProvider: any TruVideoMediaProcessing.VideoTransformProvider = AVAssetVideoTransformProvider())
+  final public func cancelCommandExecution(sessionId: Swift.Int)
+  @discardableResult
+  final public func executeFFMPEGCommand(_ command: Swift.String, onUpdateSessionId: ((Swift.Int) -> Swift.Void)?) async throws -> Swift.Result<Swift.Void, any Swift.Error>
+  @discardableResult
+  final public func executeFFMPEGProbeCommand(_ command: Swift.String) async throws -> TruVideoMediaProcessing.ExecutionResult
+  final public func getMediaInformation(_ url: Foundation.URL) async throws -> TruVideoMediaProcessing.TruvideoSdkVideoInformation
+  @objc deinit
+}
+extension Swift.String {
+  public func ffmpegFormatted() -> Swift.String
+}
+@objc public class TruvideoSdkVideoFile : ObjectiveC.NSObject {
+  final public let url: Foundation.URL
+  public init(url: Foundation.URL)
+  public init(path: Swift.String) throws
+  @objc public static func instantiate(url: Foundation.URL) -> TruVideoMediaProcessing.TruvideoSdkVideoFile
+  @objc public static func instantiate(path: Swift.String) throws -> TruVideoMediaProcessing.TruvideoSdkVideoFile
+  @objc deinit
+}
+public enum TruvideoSdkVideoFrameRate : Swift.String {
+  case twentyFourFps
+  case twentyFiveFps
+  case thirtyFps
+  case fiftyFps
+  case sixtyFps
+  case unknown
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@objc public class TruvideoSdkVideoTrackInformation : ObjectiveC.NSObject {
+  @objc final public let index: Swift.Int
+  @objc final public let width: Swift.Int
+  @objc final public let height: Swift.Int
+  @objc final public let rotatedWidth: Swift.Int
+  @objc final public let rotatedHeight: Swift.Int
+  @objc final public let codec: Swift.String
+  @objc final public let codecTag: Swift.String
+  @objc final public let pixelFormat: Swift.String
+  @objc final public let bitRate: Swift.Int
+  @objc final public let frameRate: Swift.String
+  @objc final public let rotation: Swift.Int
+  @objc final public let durationMillis: Swift.Int64
+  public init(index: Swift.Int, width: Swift.Int, height: Swift.Int, codec: Swift.String, codecTag: Swift.String, pixelFormat: Swift.String, bitRate: Swift.Int, frameRate: Swift.String, rotation: Swift.Int, durationMillis: Swift.Int64)
+  @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
+  @objc deinit
+}
+@objc public class TruvideoSdkVideoAudioTrackInformation : ObjectiveC.NSObject {
+  @objc final public let index: Swift.Int
+  @objc final public let codec: Swift.String
+  @objc final public let codecTag: Swift.String
+  @objc final public let sampleFormat: Swift.String
+  @objc final public let bitRate: Swift.Int
+  @objc final public let sampleRate: Swift.Int
+  @objc final public let channels: Swift.Int
+  @objc final public let channelLayout: Swift.String
+  @objc final public let durationMillis: Swift.Int64
+  public init(index: Swift.Int, codec: Swift.String, codecTag: Swift.String, sampleFormat: Swift.String, bitRate: Swift.Int, sampleRate: Swift.Int, channels: Swift.Int, channelLayout: Swift.String, durationMillis: Swift.Int64)
+  @objc override dynamic public func isEqual(_ object: Any?) -> Swift.Bool
+  @objc deinit
+}
+@objc public class TruvideoSdkVideoInformation : ObjectiveC.NSObject {
+  @objc final public let path: Swift.String
+  @objc final public let size: Swift.Int64
+  @objc final public let durationMillis: Swift.Int64
+  @objc final public let format: Swift.String
+  @objc final public let videoTracks: [TruVideoMediaProcessing.TruvideoSdkVideoTrackInformation]
+  @objc final public let audioTracks: [TruVideoMediaProcessing.TruvideoSdkVideoAudioTrackInformation]
+  final public let url: Foundation.URL
+  final public let orientation: TruVideoMediaProcessing.TruvideoSdkVideoInformation.Orientation
+  final public let videoSize: CoreFoundation.CGSize
+  public var videoCodec: Swift.String {
+    get
+  }
+  public var audioCodec: Swift.String {
+    get
+  }
+  public var audioSampleRates: Swift.Double {
+    get
+  }
+  public var frameRate: TruVideoMediaProcessing.TruvideoSdkVideoFrameRate {
+    get
+  }
+  public var hasAudio: Swift.Bool {
+    get
+  }
+  public var rotation: Swift.Int {
+    get
+  }
+  public enum Orientation {
+    case portrait
+    case landscape
+    public static func == (a: TruVideoMediaProcessing.TruvideoSdkVideoInformation.Orientation, b: TruVideoMediaProcessing.TruvideoSdkVideoInformation.Orientation) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public init(url: Foundation.URL, size: Swift.Int64, durationMillis: Swift.Int64, format: Swift.String, videoTracks: [TruVideoMediaProcessing.TruvideoSdkVideoTrackInformation], audioTracks: [TruVideoMediaProcessing.TruvideoSdkVideoAudioTrackInformation], orientation: TruVideoMediaProcessing.TruvideoSdkVideoInformation.Orientation, videoSize: CoreFoundation.CGSize)
+  @objc deinit
+}
+public enum TruvideoSdkVideoFileDescriptor : Swift.Hashable {
+  case cache(fileName: Swift.String)
+  case files(fileName: Swift.String)
+  case custom(rawPath: Swift.String)
+  public func url(fileExtension: Swift.String) -> Foundation.URL?
+  public func hash(into hasher: inout Swift.Hasher)
+  public static func == (a: TruVideoMediaProcessing.TruvideoSdkVideoFileDescriptor, b: TruVideoMediaProcessing.TruvideoSdkVideoFileDescriptor) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@objc public enum NSTruvideoSdkVideoFileDescriptor : Swift.Int {
+  case cache
+  case files
+  case custom
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public struct TruvideoSdkVideoThumbnailInputVideo {
+  public let input: TruVideoMediaProcessing.TruvideoSdkVideoFile
+  public let output: TruVideoMediaProcessing.TruvideoSdkVideoFileDescriptor
+  public let position: Foundation.TimeInterval
+  public let width: Swift.Int?
+  public let height: Swift.Int?
+  public init(input: TruVideoMediaProcessing.TruvideoSdkVideoFile, output: TruVideoMediaProcessing.TruvideoSdkVideoFileDescriptor, position: Foundation.TimeInterval = 1000, width: Swift.Int? = nil, height: Swift.Int? = nil)
+}
+public struct FFMPEGCommand {
+  public let script: Swift.String
+  public let inputFilesListFilePaths: [Swift.String]
+  public init(script: Swift.String, inputFilesListFilePaths: [Swift.String])
+}
+final public class FFMPEGCommandGenerator {
+  public init()
+  final public func generateEditCommand(inputFile: Foundation.URL, trimStart: Foundation.TimeInterval, trimEnd: Foundation.TimeInterval, rotationAngle: Swift.Int, volumenLevel: Swift.Float, outputFile: Foundation.URL) -> TruVideoMediaProcessing.FFMPEGCommand
+  final public func generateConcatCommandFor(videosInfo: [TruVideoMediaProcessing.TruvideoSdkVideoInformation], inputPath: Foundation.URL, outputPath: Swift.String) -> TruVideoMediaProcessing.FFMPEGCommand
+  final public func deleteInputFilesListFile(path: Swift.String)
+  final public func generateThumbnailGenerationCommandFor(video: TruVideoMediaProcessing.TruvideoSdkVideoThumbnailInputVideo, outputPath: Foundation.URL) -> Swift.String
+  final public func generateThumbnailForTrim(video: Foundation.URL, interval: Foundation.TimeInterval, width: Swift.Int? = nil, height: Swift.Int? = nil, outputPath: Swift.String) -> TruVideoMediaProcessing.FFMPEGCommand
+  final public func generateExtractAudioCommandFor(videoURL: Foundation.URL, outputPath: Foundation.URL, audioChannels: Swift.Int = 1, samplingRate: Swift.Int = 32000, bitRate: Swift.Int = 320, format: Swift.String = "wav") -> Swift.String
+  @objc deinit
+}
+public enum ImageFormat : Swift.String, Swift.Sendable {
+  case jpeg
+  case png
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum MediaInspectionError : Swift.Error, Swift.Sendable {
+  case inspectionFailed(TruVideoMediaProcessing.MediaInspectionError.Context)
+  public struct Context : Swift.Sendable {
+    public let debugDescription: Swift.String
+  }
+}
+public struct AudioMetadata : Swift.Sendable, Swift.Equatable {
+  public let bitrate: Swift.Int?
+  public let channelCount: Swift.Int?
+  public let channelLayout: TruVideoMediaProcessing.AudioMetadata.ChannelLayout?
+  public let codec: TruVideoMediaProcessing.AudioMetadata.Codec
+  public let sampleRate: Foundation.TimeInterval?
+  public let tags: [Swift.String : Swift.String]
+  public enum ChannelLayout : Swift.Sendable, Swift.Equatable {
+    case downmix
+    case fourPointZero
+    case fivePointZero
+    case fivePointZeroSide
+    case fivePointOne
+    case fivePointOneSide
+    case mono
+    case sevenPointOne
+    case sevenPointOneWide
+    case stereo
+    case quad
+    case unknown(Swift.String?)
+    public static func == (a: TruVideoMediaProcessing.AudioMetadata.ChannelLayout, b: TruVideoMediaProcessing.AudioMetadata.ChannelLayout) -> Swift.Bool
+  }
+  public enum Codec : Swift.Sendable, Swift.Equatable {
+    case aac
+    case ac3
+    case alac
+    case eac3
+    case flac
+    case mp3
+    case pcm
+    case unknown(Swift.String?)
+    public static func == (a: TruVideoMediaProcessing.AudioMetadata.Codec, b: TruVideoMediaProcessing.AudioMetadata.Codec) -> Swift.Bool
+  }
+  public static func == (a: TruVideoMediaProcessing.AudioMetadata, b: TruVideoMediaProcessing.AudioMetadata) -> Swift.Bool
+}
+public struct VideoMetadata : Swift.Sendable, Swift.Equatable {
+  public let aspectRatio: Swift.String?
+  public let bitrate: Swift.Int?
+  public let codec: TruVideoMediaProcessing.VideoMetadata.Codec
+  public let dimensions: CoreFoundation.CGSize
+  public let format: TruVideoMediaProcessing.VideoMetadata.Container
+  public let frameRate: Swift.Double?
+  public let hasClosedCaptions: Swift.Bool
+  public let tags: [Swift.String : Swift.String]?
+  public enum Codec : Swift.Sendable, Swift.Equatable {
+    case av1
+    case h264
+    case hevc
+    case mpeg4
+    case proRes
+    case vp9
+    case unknown(Swift.String)
+    public static func == (a: TruVideoMediaProcessing.VideoMetadata.Codec, b: TruVideoMediaProcessing.VideoMetadata.Codec) -> Swift.Bool
+  }
+  public enum Container : Swift.Sendable, Swift.Equatable {
+    case avi
+    case m4v
+    case mkv
+    case mov
+    case mp4
+    case webm
+    case unknown(Swift.String)
+    public static func == (a: TruVideoMediaProcessing.VideoMetadata.Container, b: TruVideoMediaProcessing.VideoMetadata.Container) -> Swift.Bool
+  }
+  public static func == (a: TruVideoMediaProcessing.VideoMetadata, b: TruVideoMediaProcessing.VideoMetadata) -> Swift.Bool
+}
+public struct MediaMetadata : Swift.Sendable, Swift.Equatable {
+  public let duration: Foundation.TimeInterval
+  public let audio: TruVideoMediaProcessing.AudioMetadata?
+  public let video: TruVideoMediaProcessing.VideoMetadata?
+  public let tags: [Swift.String : Swift.String]?
+  public static func == (a: TruVideoMediaProcessing.MediaMetadata, b: TruVideoMediaProcessing.MediaMetadata) -> Swift.Bool
+}
+public struct MediaAsset : Swift.Sendable {
+  public let url: Foundation.URL
+  public func metadata() async throws -> TruVideoMediaProcessing.MediaMetadata
+}
+extension TruVideoMediaProcessing.MediaAsset : Swift.Equatable {
+  public static func == (lhs: TruVideoMediaProcessing.MediaAsset, rhs: TruVideoMediaProcessing.MediaAsset) -> Swift.Bool
+}
+public protocol MediaComposer {
+  func compose(_ assetURLs: [Foundation.URL], into destination: Foundation.URL) async throws
+}
+public struct FFMPEGVideoComposer : TruVideoMediaProcessing.MediaComposer {
+  public init()
+  public func compose(_ assetURLs: [Foundation.URL], into destination: Foundation.URL) async throws
+}
+public enum MediaDestination : Swift.Sendable {
+  case file(Foundation.URL)
+  case temporary
+}
+public struct MediaImage : Swift.Sendable {
+  public let url: Foundation.URL
+  public var fileExtension: Swift.String {
+    get
+  }
+  public var filename: Swift.String {
+    get
+  }
+  public var format: TruVideoMediaProcessing.ImageFormat? {
+    get
+  }
+  public var size: CoreFoundation.CGSize {
+    get
+  }
+  public func data() throws -> Foundation.Data
+}
+extension TruVideoMediaProcessing.MediaImage : Swift.Equatable {
+  public static func == (lhs: TruVideoMediaProcessing.MediaImage, rhs: TruVideoMediaProcessing.MediaImage) -> Swift.Bool
+}
+public struct Rect : Swift.Sendable, Swift.Equatable {
+  public let height: Swift.Double
+  public let width: Swift.Double
+  public let x: Swift.Double
+  public let y: Swift.Double
+  public static let zero: TruVideoMediaProcessing.Rect
+  public init(x: Swift.Double, y: Swift.Double, width: Swift.Double, height: Swift.Double)
+  public init(width: Swift.Double, height: Swift.Double)
+  public static func == (a: TruVideoMediaProcessing.Rect, b: TruVideoMediaProcessing.Rect) -> Swift.Bool
+}
+public struct TimeRange : Swift.Sendable {
+  public let start: Foundation.TimeInterval
+  public let duration: Foundation.TimeInterval
+  public static let zero: TruVideoMediaProcessing.TimeRange
+  public init(start: Foundation.TimeInterval, duration: Foundation.TimeInterval)
+}
+public enum VideoCodec : Swift.Sendable {
+  case h264
+  case hevc
+  case jpeg
+  case mpeg4
+  case proRes
+  public static func == (a: TruVideoMediaProcessing.VideoCodec, b: TruVideoMediaProcessing.VideoCodec) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum VideoExportFormat : Swift.Sendable {
+  case mp4
+  case mov
+  public static func == (a: TruVideoMediaProcessing.VideoExportFormat, b: TruVideoMediaProcessing.VideoExportFormat) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public struct VideoTimelineImageGenerator {
+  public init()
+  public func images(for request: TruVideoMediaProcessing.VideoTimelineImageRequest) async throws -> [TruVideoMediaProcessing.MediaImage]
+}
+public enum VideoTimelineImageGeneratorError : Swift.Error, Swift.Sendable {
+  case generationFailed(TruVideoMediaProcessing.VideoTimelineImageGeneratorError.Context)
+  case unsupportedSource
+  public struct Context : Swift.Sendable {
+    public let debugDescription: Swift.String
+    public let underlyingError: (any Swift.Error)?
+  }
+}
+public struct VideoTimelineImageRequest : Swift.Sendable, Swift.Equatable {
+  public let id: Foundation.UUID
+  public let format: TruVideoMediaProcessing.ImageFormat
+  public let input: Foundation.URL
+  public let quality: Swift.Int
+  public let size: TruVideoMediaProcessing.VideoTimelineImageRequest.Size
+  public let sampling: TruVideoMediaProcessing.VideoTimelineImageRequest.Sampling
+  public enum Sampling : Swift.Sendable, Swift.Equatable {
+    case imageCount(Swift.Int)
+    case interval(Foundation.TimeInterval)
+    public static func == (a: TruVideoMediaProcessing.VideoTimelineImageRequest.Sampling, b: TruVideoMediaProcessing.VideoTimelineImageRequest.Sampling) -> Swift.Bool
+  }
+  public enum Size : Swift.Sendable, Swift.Equatable {
+    case fixed(width: Swift.Double, height: Swift.Double)
+    case height(Swift.Int)
+    case original
+    case width(Swift.Int)
+    public static func == (a: TruVideoMediaProcessing.VideoTimelineImageRequest.Size, b: TruVideoMediaProcessing.VideoTimelineImageRequest.Size) -> Swift.Bool
+  }
+  public init(id: Foundation.UUID = UUID(), input: Foundation.URL, sampling: TruVideoMediaProcessing.VideoTimelineImageRequest.Sampling, format: TruVideoMediaProcessing.ImageFormat = .jpeg, quality: Swift.Int = 2, size: TruVideoMediaProcessing.VideoTimelineImageRequest.Size = .original)
+  public static func == (a: TruVideoMediaProcessing.VideoTimelineImageRequest, b: TruVideoMediaProcessing.VideoTimelineImageRequest) -> Swift.Bool
+}
+extension TruVideoMediaProcessing.ContentMode : Swift.Equatable {}
+extension TruVideoMediaProcessing.ContentMode : Swift.Hashable {}
+extension TruVideoMediaProcessing.TruvideoSdkVideoFrameRate : Swift.Equatable {}
+extension TruVideoMediaProcessing.TruvideoSdkVideoFrameRate : Swift.Hashable {}
+extension TruVideoMediaProcessing.TruvideoSdkVideoFrameRate : Swift.RawRepresentable {}
+extension TruVideoMediaProcessing.TruvideoSdkVideoInformation.Orientation : Swift.Equatable {}
+extension TruVideoMediaProcessing.TruvideoSdkVideoInformation.Orientation : Swift.Hashable {}
+extension TruVideoMediaProcessing.NSTruvideoSdkVideoFileDescriptor : Swift.Equatable {}
+extension TruVideoMediaProcessing.NSTruvideoSdkVideoFileDescriptor : Swift.Hashable {}
+extension TruVideoMediaProcessing.NSTruvideoSdkVideoFileDescriptor : Swift.RawRepresentable {}
+extension TruVideoMediaProcessing.ImageFormat : Swift.Equatable {}
+extension TruVideoMediaProcessing.ImageFormat : Swift.Hashable {}
+extension TruVideoMediaProcessing.ImageFormat : Swift.RawRepresentable {}
+extension TruVideoMediaProcessing.VideoCodec : Swift.Equatable {}
+extension TruVideoMediaProcessing.VideoCodec : Swift.Hashable {}
+extension TruVideoMediaProcessing.VideoExportFormat : Swift.Equatable {}
+extension TruVideoMediaProcessing.VideoExportFormat : Swift.Hashable {}

@@ -1,0 +1,6 @@
+framework module TruVideoMediaProcessing {
+  umbrella header "TruVideoMediaProcessing.h"
+  export *
+
+  module * { export * }
+}

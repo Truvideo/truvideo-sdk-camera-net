@@ -16,6 +16,10 @@ final public class TruvideoCamera: NSObject {
         orientation: OrientationMode,
         outputPath: String,
         modeConfig: ModeTypeConfig,
+        imageType: ImageType,
+        frontResolution: CameraResolution,
+        backResolution: CameraResolution,
+        shouldMirrorFrontCamera: Bool,
         viewController: UIViewController,
         completion: @escaping (_ result: [[String: Any]]) -> Void
     ) {
@@ -26,15 +30,19 @@ final public class TruvideoCamera: NSObject {
         let modetype = convertModeType(modeConfig)
 
         let configuration = TruvideoSdkCameraConfiguration(
-                    backResolution: .hd1280x720,
+                    //backResolution: .hd1280x720,
+            backResolution: cameraResolutionType(backResolution),
                     //backResolutions: [],
                     flashMode: flashType,
-                    frontResolution: .hd1920x1080,
+                    //frontResolution: .hd1920x1080,
+            frontResolution: cameraResolutionType(frontResolution),
                     //frontResolutions: [],
+            imageFormat: imageFormatType(imageType),
                     lensFacing: lensType,
                     mode: modetype,
                     orientation: orientationType,
                     outputPath: outputPath,
+            shouldMirrorFrontCamera: shouldMirrorFrontCamera
                     
                 )
     
@@ -136,7 +144,19 @@ final public class TruvideoCamera: NSObject {
 //                completion([result])
 //            }
 //        )
+        
+        let hosting = UIHostingController(
+                rootView: ScannerCameraContainer(
+                    configuration: configuration,
+                    completion: completion
+                )
+            )
+
+            hosting.modalPresentationStyle = .fullScreen
+            viewController.present(hosting, animated: true)
     }
+    
+    
 
     
     @objc public func getCameraInfo(completionHandler: @escaping (_ result: String?, _ error: Error?) -> Void) {
@@ -155,16 +175,32 @@ final public class TruvideoCamera: NSObject {
 
       */
     
-    func imageFormatType(_ type: imageType) -> TruvideoSdkCameraImageFormat {
+//    func imageFormatType(_ type: imageType) -> TruvideoSdkCameraImageFormat {
+//        switch type {
+//        case .jpeg:
+//            return .jpeg
+//            
+//        case .png:
+//            return .png
+//        
+//        default:
+//            return .jpeg
+//        }
+//    }
+    
+    
+    
+    func imageFormatType(
+        _ type: ImageType
+    ) -> TruvideoSdkCameraImageFormat {
+
         switch type {
+
         case .jpeg:
             return .jpeg
-            
+
         case .png:
             return .png
-        
-        default:
-            return .jpeg
         }
     }
 
@@ -210,6 +246,21 @@ final public class TruvideoCamera: NSObject {
 
         default:
             return nil
+        }
+    }
+    
+    func cameraResolutionType(_ resolution: CameraResolution) -> TruvideoSdkCameraResolution {
+
+        switch resolution {
+
+        case .sd640x480:
+            return .sd640x480
+
+        case .hd1280x720:
+            return .hd1280x720
+
+        case .hd1920x1080:
+            return .hd1920x1080
         }
     }
     
@@ -293,9 +344,17 @@ final public class TruvideoCamera: NSObject {
     
 }
 
-enum imageType {
-    case jpeg
-    case png
+@objc
+public enum ImageType: Int {
+    case jpeg = 0
+    case png = 1
+}
+
+@objc
+public enum CameraResolution: Int {
+    case sd640x480 = 0
+    case hd1280x720 = 1
+    case hd1920x1080 = 2
 }
 
 @objc public enum LensType: Int {
@@ -387,5 +446,37 @@ extension Encodable {
             print("Encoding error:", error)
             return nil
         }
+    }
+}
+import SwiftUI
+private struct ScannerCameraContainer: View {
+
+    @Environment(\.dismiss) private var dismiss
+    @State private var isPresented = true
+
+    let configuration: TruvideoSdkScannerCameraConfiguration
+    let completion: ([[String: Any]]) -> Void
+
+    var body: some View {
+        Color.clear
+            .presentTruvideoSdkScannerCameraView(
+                isPresented: $isPresented,
+                preset: configuration
+            ) { scannerCode in
+
+                guard let code = scannerCode else {
+                    completion([])
+                    dismiss()
+                    return
+                }
+
+                let result: [String: Any] = [
+                    "data": code.data,
+                    "format": code.format.rawValue
+                ]
+
+                completion([result])
+                dismiss()
+            }
     }
 }

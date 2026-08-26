@@ -305,9 +305,20 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 #if defined(__OBJC__)
 
+typedef SWIFT_ENUM(NSInteger, CameraResolution, open) {
+  CameraResolutionSd640x480 = 0,
+  CameraResolutionHd1280x720 = 1,
+  CameraResolutionHd1920x1080 = 2,
+};
+
 typedef SWIFT_ENUM(NSInteger, FlashMode, open) {
   FlashModeOn = 0,
   FlashModeOff = 1,
+};
+
+typedef SWIFT_ENUM(NSInteger, ImageType, open) {
+  ImageTypeJpeg = 0,
+  ImageTypePng = 1,
 };
 
 typedef SWIFT_ENUM(NSInteger, LensType, open) {
@@ -360,7 +371,7 @@ SWIFT_CLASS("_TtC14TruvideoCamera14TruvideoCamera")
 @interface TruvideoCamera : NSObject
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) TruvideoCamera * _Nonnull shared;)
 + (TruvideoCamera * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
-- (void)showCameraWithLensFacing:(enum LensType)lensFacing flashMode:(enum FlashMode)flashMode orientation:(enum OrientationMode)orientation outputPath:(NSString * _Nonnull)outputPath modeConfig:(ModeTypeConfig * _Nonnull)modeConfig viewController:(UIViewController * _Nonnull)viewController completion:(void (^ _Nonnull)(NSArray<NSDictionary<NSString *, id> *> * _Nonnull))completion;
+- (void)showCameraWithLensFacing:(enum LensType)lensFacing flashMode:(enum FlashMode)flashMode orientation:(enum OrientationMode)orientation outputPath:(NSString * _Nonnull)outputPath modeConfig:(ModeTypeConfig * _Nonnull)modeConfig imageType:(enum ImageType)imageType frontResolution:(enum CameraResolution)frontResolution backResolution:(enum CameraResolution)backResolution shouldMirrorFrontCamera:(BOOL)shouldMirrorFrontCamera viewController:(UIViewController * _Nonnull)viewController completion:(void (^ _Nonnull)(NSArray<NSDictionary<NSString *, id> *> * _Nonnull))completion;
 - (void)showARCameraWithFlashMode:(enum FlashMode)flashMode orientation:(enum OrientationMode)orientation modeConfig:(ModeTypeConfig * _Nonnull)modeConfig viewController:(UIViewController * _Nonnull)viewController completion:(void (^ _Nonnull)(NSArray<NSDictionary<NSString *, id> *> * _Nonnull))completion;
 - (void)showScannerCameraWithFlashMode:(enum FlashMode)flashMode orientation:(enum OrientationMode)orientation viewController:(UIViewController * _Nonnull)viewController completion:(void (^ _Nonnull)(NSArray<NSDictionary<NSString *, id> *> * _Nonnull))completion;
 - (void)getCameraInfoWithCompletionHandler:(void (^ _Nonnull)(NSString * _Nullable, NSError * _Nullable))completionHandler;

@@ -5,6 +5,7 @@ import ARKit
 import AVFoundation
 import AVKit
 import Combine
+import CoreGraphics
 import CoreImage
 import CoreMedia
 import CoreMotion
@@ -146,8 +147,9 @@ extension SwiftUICore.View {
   @objc final public let mode: TruvideoSdkCamera.TruvideoSdkCameraMediaMode
   final public let orientation: TruvideoSdkCamera.TruvideoSdkCameraOrientation?
   @objc final public let outputPath: Swift.String
-  public init(backResolution: TruvideoSdkCamera.TruvideoSdkCameraResolution = .hd1280x720, backResolutions: [TruvideoSdkCamera.TruvideoSdkCameraResolution] = TruvideoSdkCameraResolution.allCases, flashMode: TruvideoSdkCamera.TruvideoSdkCameraFlashMode = .off, frontResolution: TruvideoSdkCamera.TruvideoSdkCameraResolution = .hd1280x720, frontResolutions: [TruvideoSdkCamera.TruvideoSdkCameraResolution] = TruvideoSdkCameraResolution.allCases, imageFormat: TruvideoSdkCamera.TruvideoSdkCameraImageFormat = .jpeg, lensFacing: TruvideoSdkCamera.TruvideoSdkCameraLensFacing = .back, mode: TruvideoSdkCamera.TruvideoSdkCameraMediaMode = .videoAndPicture(), orientation: TruvideoSdkCamera.TruvideoSdkCameraOrientation? = nil, outputPath: Swift.String = "")
-  @objc convenience public init(backResolutions: [TruvideoSdkCamera.TruvideoSdkCameraResolution], backResolution: TruvideoSdkCamera.TruvideoSdkCameraResolution, flashMode: TruvideoSdkCamera.TruvideoSdkCameraFlashMode, frontResolution: TruvideoSdkCamera.TruvideoSdkCameraResolution, frontResolutions: [TruvideoSdkCamera.TruvideoSdkCameraResolution], imageFormat: TruvideoSdkCamera.TruvideoSdkCameraImageFormat, lensFacing: TruvideoSdkCamera.TruvideoSdkCameraLensFacing, mode: TruvideoSdkCamera.TruvideoSdkCameraMediaMode, outputPath: Swift.String)
+  @objc final public let shouldMirrorFrontCamera: Swift.Bool
+  public init(backResolution: TruvideoSdkCamera.TruvideoSdkCameraResolution = .hd1280x720, backResolutions: [TruvideoSdkCamera.TruvideoSdkCameraResolution] = TruvideoSdkCameraResolution.allCases, flashMode: TruvideoSdkCamera.TruvideoSdkCameraFlashMode = .off, frontResolution: TruvideoSdkCamera.TruvideoSdkCameraResolution = .hd1280x720, frontResolutions: [TruvideoSdkCamera.TruvideoSdkCameraResolution] = TruvideoSdkCameraResolution.allCases, imageFormat: TruvideoSdkCamera.TruvideoSdkCameraImageFormat = .jpeg, lensFacing: TruvideoSdkCamera.TruvideoSdkCameraLensFacing = .back, mode: TruvideoSdkCamera.TruvideoSdkCameraMediaMode = .media(), orientation: TruvideoSdkCamera.TruvideoSdkCameraOrientation? = nil, outputPath: Swift.String = "", shouldMirrorFrontCamera: Swift.Bool = false)
+  @objc convenience public init(backResolutions: [TruvideoSdkCamera.TruvideoSdkCameraResolution], backResolution: TruvideoSdkCamera.TruvideoSdkCameraResolution, flashMode: TruvideoSdkCamera.TruvideoSdkCameraFlashMode, frontResolution: TruvideoSdkCamera.TruvideoSdkCameraResolution, frontResolutions: [TruvideoSdkCamera.TruvideoSdkCameraResolution], imageFormat: TruvideoSdkCamera.TruvideoSdkCameraImageFormat, lensFacing: TruvideoSdkCamera.TruvideoSdkCameraLensFacing, mode: TruvideoSdkCamera.TruvideoSdkCameraMediaMode, outputPath: Swift.String, shouldMirrorFrontCamera: Swift.Bool)
   @objc convenience public init(backResolutions: [TruvideoSdkCamera.TruvideoSdkCameraResolution], backResolution: TruvideoSdkCamera.TruvideoSdkCameraResolution, flashMode: TruvideoSdkCamera.TruvideoSdkCameraFlashMode, frontResolution: TruvideoSdkCamera.TruvideoSdkCameraResolution, frontResolutions: [TruvideoSdkCamera.TruvideoSdkCameraResolution], imageFormat: TruvideoSdkCamera.TruvideoSdkCameraImageFormat, lensFacing: TruvideoSdkCamera.TruvideoSdkCameraLensFacing, mode: TruvideoSdkCamera.TruvideoSdkCameraMediaMode, orientation: TruvideoSdkCamera.TruvideoSdkCameraOrientation, outputPath: Swift.String)
   @objc deinit
 }
@@ -275,12 +277,14 @@ extension TruvideoSdkCamera.TruvideoSdkCameraMediaMode {
   @objc public static func NSVideoAndPicture(mediaCount: Foundation.NSNumber? = nil, videoDuration: Foundation.NSNumber? = nil) -> TruvideoSdkCamera.TruvideoSdkCameraMediaMode
 }
 @objc @_hasMissingDesignatedInitializers @objcMembers final public class TruvideoSdkCameraMediaMode : ObjectiveC.NSObject, Swift.Sendable {
+  public static func media(totalCount: Swift.Int? = nil, videoDuration: Swift.Int? = nil) -> TruvideoSdkCamera.TruvideoSdkCameraMediaMode
   public static func picture(pictureCount: Swift.Int? = nil) -> TruvideoSdkCamera.TruvideoSdkCameraMediaMode
   @objc public static func singlePicture() -> TruvideoSdkCamera.TruvideoSdkCameraMediaMode
   public static func singleVideo(videoDuration: Swift.Int? = nil) -> TruvideoSdkCamera.TruvideoSdkCameraMediaMode
   public static func singleVideoOrPicture(videoDuration: Swift.Int? = nil) -> TruvideoSdkCamera.TruvideoSdkCameraMediaMode
   public static func video(videoCount: Swift.Int? = nil, videoDuration: Swift.Int? = nil) -> TruvideoSdkCamera.TruvideoSdkCameraMediaMode
   public static func videoAndPicture(videoCount: Swift.Int? = nil, pictureCount: Swift.Int? = nil, videoDuration: Swift.Int? = nil) -> TruvideoSdkCamera.TruvideoSdkCameraMediaMode
+  @available(*, deprecated, renamed: "media(totalCount:videoDuration:)")
   public static func videoAndPicture(mediaCount: Swift.Int? = nil, videoDuration: Swift.Int? = nil) -> TruvideoSdkCamera.TruvideoSdkCameraMediaMode
   @objc deinit
 }

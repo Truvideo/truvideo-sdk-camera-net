@@ -38,4 +38,20 @@ namespace TruvideoCameraiOS
         Any = 4
     }
     
+    // NEW
+    [Native]
+    public enum CameraResolution : long
+    {
+        Sd640x480 = 0,
+        Hd1280x720 = 1,
+        Hd1920x1080 = 2
+    }
+    
+    [Native]
+    public enum ImageType : long
+    {
+        Jpeg = 0,
+        Png = 1
+    }
+    
 }

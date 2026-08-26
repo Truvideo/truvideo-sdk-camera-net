@@ -4,6 +4,7 @@
 // swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.2.3
 import Combine
 import Swift
+import SwiftUI
 @_exported import TruvideoCamera
 import TruvideoSdkCamera
 import UIKit
@@ -12,7 +13,7 @@ import _StringProcessing
 import _SwiftConcurrencyShims
 @_inheritsConvenienceInitializers @objc final public class TruvideoCamera : ObjectiveC.NSObject {
   @objc public static let shared: TruvideoCamera.TruvideoCamera
-  @objc final public func showCamera(lensFacing: TruvideoCamera.LensType, flashMode: TruvideoCamera.FlashMode, orientation: TruvideoCamera.OrientationMode, outputPath: Swift.String, modeConfig: TruvideoCamera.ModeTypeConfig, viewController: UIKit.UIViewController, completion: @escaping (_ result: [[Swift.String : Any]]) -> Swift.Void)
+  @objc final public func showCamera(lensFacing: TruvideoCamera.LensType, flashMode: TruvideoCamera.FlashMode, orientation: TruvideoCamera.OrientationMode, outputPath: Swift.String, modeConfig: TruvideoCamera.ModeTypeConfig, imageType: TruvideoCamera.ImageType, frontResolution: TruvideoCamera.CameraResolution, backResolution: TruvideoCamera.CameraResolution, shouldMirrorFrontCamera: Swift.Bool, viewController: UIKit.UIViewController, completion: @escaping (_ result: [[Swift.String : Any]]) -> Swift.Void)
   @objc final public func showARCamera(flashMode: TruvideoCamera.FlashMode, orientation: TruvideoCamera.OrientationMode, modeConfig: TruvideoCamera.ModeTypeConfig, viewController: UIKit.UIViewController, completion: @escaping (_ result: [[Swift.String : Any]]) -> Swift.Void)
   @objc final public func showScannerCamera(flashMode: TruvideoCamera.FlashMode, orientation: TruvideoCamera.OrientationMode, viewController: UIKit.UIViewController, completion: @escaping (_ result: [[Swift.String : Any]]) -> Swift.Void)
   #if compiler(>=5.3) && $NonescapableTypes
@@ -22,6 +23,29 @@ import _SwiftConcurrencyShims
   @objc final public func clearCameraEventSubscriptions()
   @objc override dynamic public init()
   @objc deinit
+}
+@objc public enum ImageType : Swift.Int {
+  case jpeg = 0
+  case png = 1
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.Int)
+  #endif
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum CameraResolution : Swift.Int {
+  case sd640x480 = 0
+  case hd1280x720 = 1
+  case hd1920x1080 = 2
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.Int)
+  #endif
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
 }
 @objc public enum LensType : Swift.Int {
   case back
@@ -105,6 +129,12 @@ import _SwiftConcurrencyShims
   #endif
   @objc deinit
 }
+extension TruvideoCamera.ImageType : Swift.Equatable {}
+extension TruvideoCamera.ImageType : Swift.Hashable {}
+extension TruvideoCamera.ImageType : Swift.RawRepresentable {}
+extension TruvideoCamera.CameraResolution : Swift.Equatable {}
+extension TruvideoCamera.CameraResolution : Swift.Hashable {}
+extension TruvideoCamera.CameraResolution : Swift.RawRepresentable {}
 extension TruvideoCamera.LensType : Swift.Equatable {}
 extension TruvideoCamera.LensType : Swift.Hashable {}
 extension TruvideoCamera.LensType : Swift.RawRepresentable {}

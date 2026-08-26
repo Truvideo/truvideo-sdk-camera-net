@@ -86,7 +86,7 @@
           {
             "kind": "Function",
             "name": "showCamera",
-            "printedName": "showCamera(lensFacing:flashMode:orientation:outputPath:modeConfig:viewController:completion:)",
+            "printedName": "showCamera(lensFacing:flashMode:orientation:outputPath:modeConfig:imageType:frontResolution:backResolution:shouldMirrorFrontCamera:viewController:completion:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -122,6 +122,30 @@
                 "name": "ModeTypeConfig",
                 "printedName": "TruvideoCamera.ModeTypeConfig",
                 "usr": "c:@M@TruvideoCamera@objc(cs)ModeTypeConfig"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ImageType",
+                "printedName": "TruvideoCamera.ImageType",
+                "usr": "c:@M@TruvideoCamera@E@ImageType"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CameraResolution",
+                "printedName": "TruvideoCamera.CameraResolution",
+                "usr": "c:@M@TruvideoCamera@E@CameraResolution"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CameraResolution",
+                "printedName": "TruvideoCamera.CameraResolution",
+                "usr": "c:@M@TruvideoCamera@E@CameraResolution"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
               },
               {
                 "kind": "TypeNominal",
@@ -170,10 +194,10 @@
               }
             ],
             "declKind": "Func",
-            "usr": "c:@M@TruvideoCamera@objc(cs)TruvideoCamera(im)showCameraWithLensFacing:flashMode:orientation:outputPath:modeConfig:viewController:completion:",
-            "mangledName": "$s14TruvideoCameraAAC04showB010lensFacing9flashMode11orientation10outputPath10modeConfig14viewController10completionyAA8LensTypeO_AA05FlashG0OAA011OrientationG0OSSAA0gqL0CSo06UIViewN0CySaySDySSypGGctF",
+            "usr": "c:@M@TruvideoCamera@objc(cs)TruvideoCamera(im)showCameraWithLensFacing:flashMode:orientation:outputPath:modeConfig:imageType:frontResolution:backResolution:shouldMirrorFrontCamera:viewController:completion:",
+            "mangledName": "$s14TruvideoCameraAAC04showB010lensFacing9flashMode11orientation10outputPath10modeConfig9imageType15frontResolution04backP0017shouldMirrorFrontB014viewController10completionyAA04LensN0O_AA05FlashG0OAA011OrientationG0OSSAA0gnL0CAA05ImageN0OAA0bP0OAZSbSo06UIViewV0CySaySDySSypGGctF",
             "moduleName": "TruvideoCamera",
-            "objc_name": "showCameraWithLensFacing:flashMode:orientation:outputPath:modeConfig:viewController:completion:",
+            "objc_name": "showCameraWithLensFacing:flashMode:orientation:outputPath:modeConfig:imageType:frontResolution:backResolution:shouldMirrorFrontCamera:viewController:completion:",
             "declAttributes": [
               "Final",
               "AccessControl",
@@ -585,6 +609,491 @@
             "printedName": "CustomDebugStringConvertible",
             "usr": "s:s28CustomDebugStringConvertibleP",
             "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "ImageType",
+        "printedName": "ImageType",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "jpeg",
+            "printedName": "jpeg",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(TruvideoCamera.ImageType.Type) -> TruvideoCamera.ImageType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ImageType",
+                    "printedName": "TruvideoCamera.ImageType",
+                    "usr": "c:@M@TruvideoCamera@E@ImageType"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "TruvideoCamera.ImageType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ImageType",
+                        "printedName": "TruvideoCamera.ImageType",
+                        "usr": "c:@M@TruvideoCamera@E@ImageType"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@TruvideoCamera@E@ImageType@ImageTypeJpeg",
+            "mangledName": "$s14TruvideoCamera9ImageTypeO4jpegyA2CmF",
+            "moduleName": "TruvideoCamera",
+            "declAttributes": [
+              "ObjC"
+            ],
+            "fixedbinaryorder": 0
+          },
+          {
+            "kind": "Var",
+            "name": "png",
+            "printedName": "png",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(TruvideoCamera.ImageType.Type) -> TruvideoCamera.ImageType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ImageType",
+                    "printedName": "TruvideoCamera.ImageType",
+                    "usr": "c:@M@TruvideoCamera@E@ImageType"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "TruvideoCamera.ImageType.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ImageType",
+                        "printedName": "TruvideoCamera.ImageType",
+                        "usr": "c:@M@TruvideoCamera@E@ImageType"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@TruvideoCamera@E@ImageType@ImageTypePng",
+            "mangledName": "$s14TruvideoCamera9ImageTypeO3pngyA2CmF",
+            "moduleName": "TruvideoCamera",
+            "declAttributes": [
+              "ObjC"
+            ],
+            "fixedbinaryorder": 1
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(rawValue:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "TruvideoCamera.ImageType?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ImageType",
+                    "printedName": "TruvideoCamera.ImageType",
+                    "usr": "c:@M@TruvideoCamera@E@ImageType"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:14TruvideoCamera9ImageTypeO8rawValueACSgSi_tcfc",
+            "mangledName": "$s14TruvideoCamera9ImageTypeO8rawValueACSgSi_tcfc",
+            "moduleName": "TruvideoCamera",
+            "implicit": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Var",
+            "name": "rawValue",
+            "printedName": "rawValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:14TruvideoCamera9ImageTypeO8rawValueSivp",
+            "mangledName": "$s14TruvideoCamera9ImageTypeO8rawValueSivp",
+            "moduleName": "TruvideoCamera",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:14TruvideoCamera9ImageTypeO8rawValueSivg",
+                "mangledName": "$s14TruvideoCamera9ImageTypeO8rawValueSivg",
+                "moduleName": "TruvideoCamera",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "c:@M@TruvideoCamera@E@ImageType",
+        "mangledName": "$s14TruvideoCamera9ImageTypeO",
+        "moduleName": "TruvideoCamera",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC"
+        ],
+        "enumRawTypeName": "Int",
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "RawRepresentable",
+            "printedName": "RawRepresentable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "RawValue",
+                "printedName": "RawValue",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:SY",
+            "mangledName": "$sSY"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "CameraResolution",
+        "printedName": "CameraResolution",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "sd640x480",
+            "printedName": "sd640x480",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(TruvideoCamera.CameraResolution.Type) -> TruvideoCamera.CameraResolution",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CameraResolution",
+                    "printedName": "TruvideoCamera.CameraResolution",
+                    "usr": "c:@M@TruvideoCamera@E@CameraResolution"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "TruvideoCamera.CameraResolution.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "CameraResolution",
+                        "printedName": "TruvideoCamera.CameraResolution",
+                        "usr": "c:@M@TruvideoCamera@E@CameraResolution"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@TruvideoCamera@E@CameraResolution@CameraResolutionSd640x480",
+            "mangledName": "$s14TruvideoCamera0B10ResolutionO9sd640x480yA2CmF",
+            "moduleName": "TruvideoCamera",
+            "declAttributes": [
+              "ObjC"
+            ],
+            "fixedbinaryorder": 0
+          },
+          {
+            "kind": "Var",
+            "name": "hd1280x720",
+            "printedName": "hd1280x720",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(TruvideoCamera.CameraResolution.Type) -> TruvideoCamera.CameraResolution",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CameraResolution",
+                    "printedName": "TruvideoCamera.CameraResolution",
+                    "usr": "c:@M@TruvideoCamera@E@CameraResolution"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "TruvideoCamera.CameraResolution.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "CameraResolution",
+                        "printedName": "TruvideoCamera.CameraResolution",
+                        "usr": "c:@M@TruvideoCamera@E@CameraResolution"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@TruvideoCamera@E@CameraResolution@CameraResolutionHd1280x720",
+            "mangledName": "$s14TruvideoCamera0B10ResolutionO10hd1280x720yA2CmF",
+            "moduleName": "TruvideoCamera",
+            "declAttributes": [
+              "ObjC"
+            ],
+            "fixedbinaryorder": 1
+          },
+          {
+            "kind": "Var",
+            "name": "hd1920x1080",
+            "printedName": "hd1920x1080",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(TruvideoCamera.CameraResolution.Type) -> TruvideoCamera.CameraResolution",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CameraResolution",
+                    "printedName": "TruvideoCamera.CameraResolution",
+                    "usr": "c:@M@TruvideoCamera@E@CameraResolution"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "TruvideoCamera.CameraResolution.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "CameraResolution",
+                        "printedName": "TruvideoCamera.CameraResolution",
+                        "usr": "c:@M@TruvideoCamera@E@CameraResolution"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "c:@M@TruvideoCamera@E@CameraResolution@CameraResolutionHd1920x1080",
+            "mangledName": "$s14TruvideoCamera0B10ResolutionO11hd1920x1080yA2CmF",
+            "moduleName": "TruvideoCamera",
+            "declAttributes": [
+              "ObjC"
+            ],
+            "fixedbinaryorder": 2
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(rawValue:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "TruvideoCamera.CameraResolution?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CameraResolution",
+                    "printedName": "TruvideoCamera.CameraResolution",
+                    "usr": "c:@M@TruvideoCamera@E@CameraResolution"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:14TruvideoCamera0B10ResolutionO8rawValueACSgSi_tcfc",
+            "mangledName": "$s14TruvideoCamera0B10ResolutionO8rawValueACSgSi_tcfc",
+            "moduleName": "TruvideoCamera",
+            "implicit": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Var",
+            "name": "rawValue",
+            "printedName": "rawValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:14TruvideoCamera0B10ResolutionO8rawValueSivp",
+            "mangledName": "$s14TruvideoCamera0B10ResolutionO8rawValueSivp",
+            "moduleName": "TruvideoCamera",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:14TruvideoCamera0B10ResolutionO8rawValueSivg",
+                "mangledName": "$s14TruvideoCamera0B10ResolutionO8rawValueSivg",
+                "moduleName": "TruvideoCamera",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "c:@M@TruvideoCamera@E@CameraResolution",
+        "mangledName": "$s14TruvideoCamera0B10ResolutionO",
+        "moduleName": "TruvideoCamera",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC"
+        ],
+        "enumRawTypeName": "Int",
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "RawRepresentable",
+            "printedName": "RawRepresentable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "RawValue",
+                "printedName": "RawValue",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:SY",
+            "mangledName": "$sSY"
           }
         ]
       },
@@ -2888,101 +3397,150 @@
             "mangledName": "$ss28CustomDebugStringConvertibleP"
           }
         ]
+      },
+      {
+        "kind": "Import",
+        "name": "SwiftUI",
+        "printedName": "SwiftUI",
+        "declKind": "Import",
+        "moduleName": "TruvideoCamera"
       }
     ],
     "json_format_version": 8
   },
   "ConstValues": [
     {
-      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpgradeSDK79\/19MAR\/maui-sdk-demo-app-source\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
+      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpdateiOSSDK\/TruVideoSampleIOSApp\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
       "kind": "IntegerLiteral",
-      "offset": 9598,
-      "length": 5,
-      "value": "1"
-    },
-    {
-      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpgradeSDK79\/19MAR\/maui-sdk-demo-app-source\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
-      "kind": "IntegerLiteral",
-      "offset": 9663,
-      "length": 3,
-      "value": "1"
-    },
-    {
-      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpgradeSDK79\/19MAR\/maui-sdk-demo-app-source\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
-      "kind": "IntegerLiteral",
-      "offset": 9738,
-      "length": 13,
-      "value": "1"
-    },
-    {
-      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpgradeSDK79\/19MAR\/maui-sdk-demo-app-source\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
-      "kind": "IntegerLiteral",
-      "offset": 9761,
-      "length": 14,
-      "value": "2"
-    },
-    {
-      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpgradeSDK79\/19MAR\/maui-sdk-demo-app-source\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
-      "kind": "IntegerLiteral",
-      "offset": 9785,
-      "length": 15,
-      "value": "3"
-    },
-    {
-      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpgradeSDK79\/19MAR\/maui-sdk-demo-app-source\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
-      "kind": "IntegerLiteral",
-      "offset": 9810,
-      "length": 3,
-      "value": "4"
-    },
-    {
-      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpgradeSDK79\/19MAR\/maui-sdk-demo-app-source\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
-      "kind": "IntegerLiteral",
-      "offset": 9881,
+      "offset": 10885,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpgradeSDK79\/19MAR\/maui-sdk-demo-app-source\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
+      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpdateiOSSDK\/TruVideoSampleIOSApp\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
       "kind": "IntegerLiteral",
-      "offset": 9906,
+      "offset": 10902,
       "length": 1,
       "value": "1"
     },
     {
-      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpgradeSDK79\/19MAR\/maui-sdk-demo-app-source\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
+      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpdateiOSSDK\/TruVideoSampleIOSApp\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
       "kind": "IntegerLiteral",
-      "offset": 9933,
+      "offset": 10970,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpdateiOSSDK\/TruVideoSampleIOSApp\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
+      "kind": "IntegerLiteral",
+      "offset": 10994,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpdateiOSSDK\/TruVideoSampleIOSApp\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
+      "kind": "IntegerLiteral",
+      "offset": 11019,
       "length": 1,
       "value": "2"
     },
     {
-      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpgradeSDK79\/19MAR\/maui-sdk-demo-app-source\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
+      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpdateiOSSDK\/TruVideoSampleIOSApp\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
       "kind": "IntegerLiteral",
-      "offset": 9967,
+      "offset": 11081,
+      "length": 5,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpdateiOSSDK\/TruVideoSampleIOSApp\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
+      "kind": "IntegerLiteral",
+      "offset": 11146,
+      "length": 3,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpdateiOSSDK\/TruVideoSampleIOSApp\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
+      "kind": "IntegerLiteral",
+      "offset": 11221,
+      "length": 13,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpdateiOSSDK\/TruVideoSampleIOSApp\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
+      "kind": "IntegerLiteral",
+      "offset": 11244,
+      "length": 14,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpdateiOSSDK\/TruVideoSampleIOSApp\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
+      "kind": "IntegerLiteral",
+      "offset": 11268,
+      "length": 15,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpdateiOSSDK\/TruVideoSampleIOSApp\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
+      "kind": "IntegerLiteral",
+      "offset": 11293,
+      "length": 3,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpdateiOSSDK\/TruVideoSampleIOSApp\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
+      "kind": "IntegerLiteral",
+      "offset": 11364,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpdateiOSSDK\/TruVideoSampleIOSApp\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
+      "kind": "IntegerLiteral",
+      "offset": 11389,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpdateiOSSDK\/TruVideoSampleIOSApp\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
+      "kind": "IntegerLiteral",
+      "offset": 11416,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpdateiOSSDK\/TruVideoSampleIOSApp\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
+      "kind": "IntegerLiteral",
+      "offset": 11450,
       "length": 1,
       "value": "3"
     },
     {
-      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpgradeSDK79\/19MAR\/maui-sdk-demo-app-source\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
+      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpdateiOSSDK\/TruVideoSampleIOSApp\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
       "kind": "IntegerLiteral",
-      "offset": 9986,
+      "offset": 11469,
       "length": 1,
       "value": "4"
     },
     {
-      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpgradeSDK79\/19MAR\/maui-sdk-demo-app-source\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
+      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpdateiOSSDK\/TruVideoSampleIOSApp\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
       "kind": "IntegerLiteral",
-      "offset": 10007,
+      "offset": 11490,
       "length": 1,
       "value": "5"
     },
     {
-      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpgradeSDK79\/19MAR\/maui-sdk-demo-app-source\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
+      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpdateiOSSDK\/TruVideoSampleIOSApp\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
       "kind": "IntegerLiteral",
-      "offset": 10043,
+      "offset": 11526,
       "length": 1,
       "value": "6"
+    },
+    {
+      "filePath": "\/Users\/apple\/Documents\/TruVideo\/UpdateiOSSDK\/TruVideoSampleIOSApp\/iOS\/TruvideoCamera\/TruvideoCamera\/TruvideoCamera.swift",
+      "kind": "BooleanLiteral",
+      "offset": 14259,
+      "length": 4,
+      "value": "true"
     }
   ]
 }

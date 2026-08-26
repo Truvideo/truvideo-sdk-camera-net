@@ -97,9 +97,32 @@ namespace TruvideoCameraiOS
         [Export("shared")]
         TruvideoCamera Shared { get; }
 
-        [Export("showCameraWithLensFacing:flashMode:orientation:outputPath:modeConfig:viewController:completion:")]
-        void ShowCamera(LensType lensFacing, FlashMode flashMode, OrientationMode orientation, string outputPath, ModeTypeConfig modeConfig, UIViewController viewController, Action<NSArray<NSDictionary>> completion);
-
+        // [Export("showCameraWithLensFacing:flashMode:orientation:outputPath:modeConfig:viewController:completion:")]
+        // void ShowCamera(LensType lensFacing, FlashMode flashMode, OrientationMode orientation, string outputPath, ModeTypeConfig modeConfig, UIViewController viewController, Action<NSArray<NSDictionary>> completion);
+        //
+        //
+        // [Export("showCameraWithLensFacing:flashMode:orientation:outputPath:modeConfig:frontResolution:backResolution:viewController:completion:")]
+        // void ShowCamera(
+        //     LensType lensFacing, FlashMode flashMode, OrientationMode orientation, string outputPath, ModeTypeConfig modeConfig, CameraResolution frontResolution, CameraResolution backResolution, UIViewController viewController,
+        //     Action<NSArray<NSDictionary>> completion
+        // );
+        
+        
+        [Export("showCameraWithLensFacing:flashMode:orientation:outputPath:modeConfig:imageType:frontResolution:backResolution:shouldMirrorFrontCamera:viewController:completion:")]
+        void ShowCamera(
+            LensType lensFacing,
+            FlashMode flashMode,
+            OrientationMode orientation,
+            string outputPath,
+            ModeTypeConfig modeConfig,
+            ImageType imageType,
+            CameraResolution frontResolution,
+            CameraResolution backResolution,
+            bool shouldMirrorFrontCamera,
+            UIViewController viewController,
+            Action<NSArray<NSDictionary>> completion
+        );
+        
         [Export("getCameraInfoWithCompletionHandler:")]
         void GetCameraInfo(Action<NSString, NSError> completionHandler);
 
